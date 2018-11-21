@@ -1,5 +1,5 @@
 <?php
-include_once ('../header.php');
+include_once('../header.php');
 session_start();
 $email = 'jg119@hdm-stuttgart.de';
 ?>
@@ -14,7 +14,7 @@ $email = 'jg119@hdm-stuttgart.de';
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
 <div id="benutzerseite">
-    <div class="col-4" >
+    <div class="col-4">
 
 
 </div>
