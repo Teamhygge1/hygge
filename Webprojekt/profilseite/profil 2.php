@@ -1,8 +1,14 @@
 <?php
+<<<<<<< Updated upstream
 require ('../header2.php');
 require ('datenbank.php');
 
 $email = 'jg119@hdm-stuttgart.de';
+=======
+include_once('../header 2.php');
+session_start();
+$email = 'test@test.de';
+>>>>>>> Stashed changes
 ?>
 
 
@@ -19,7 +25,11 @@ $email = 'jg119@hdm-stuttgart.de';
          <div class="col-md-4"
             <h3>Infos Über mich:</h3>
             <?php
+<<<<<<< Updated upstream
             $statement = $db->prepare("SELECT 'E-Mail', 'Name', 'Kürzel', 'Studiengang' FROM 'Profil' WHERE $email='E-Mail'");
+=======
+            $statement = $pdo->prepare("SELECT 'E-Mail', 'Name', 'Kürzel', 'Studiengang' FROM 'users' WHERE $email='E-Mail'");
+>>>>>>> Stashed changes
             $result = $statement->execute();
             while ($zeile = $result->fetchObject()) {
                 echo "<ul>$zeile</ul>";

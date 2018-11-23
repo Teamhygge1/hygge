@@ -74,7 +74,17 @@ if($showFormular) {
         <input type="password"  name="passwort2"><br><br>
 
         <input type="submit" value="Los gehts!">
+
     </form>
+
+
+        <form action="login.php">
+            <input type="submit" value="Bereits dabei? Log dich ein!">
+
+
+
+
+
 
     <?php
 } //Ende von if($showFormular)
