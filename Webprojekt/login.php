@@ -13,7 +13,7 @@ if(isset($_GET['login'])) {
 
     //Überprüfung des Passworts
     if ($user !== false && password_verify($passwort, $user['passwort'])) {
-        $_SESSION['userid'] = $user['id'];
+        $_SESSION['id'] = $user['id'];
         die('Login erfolgreich. Weiter zu <a href="geheim.php">internen Bereich</a>');
     } else {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";
@@ -43,5 +43,10 @@ if(isset($errorMessage)) {
 
     <input type="submit" value="Abschicken">
 </form>
+
+
+<form action="passwortvergessen.php">
+    <input type="submit" value="Passwort vergessen?">
+
 </body>
 </html>
