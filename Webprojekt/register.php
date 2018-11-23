@@ -34,7 +34,7 @@ if(isset($_GET['register'])) {
 
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
-        $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $statement = $pdo->prepare("SELECT * FROM users WHERE email = email");
         $result = $statement->execute(array('email' => $email));
         $user = $statement->fetch();
 
@@ -74,7 +74,17 @@ if($showFormular) {
         <input type="password"  name="passwort2"><br><br>
 
         <input type="submit" value="Los gehts!">
+
     </form>
+
+
+        <form action="login.php">
+            <input type="submit" value="Bereits dabei? Log dich ein!">
+
+
+
+
+
 
     <?php
 } //Ende von if($showFormular)

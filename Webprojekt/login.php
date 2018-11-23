@@ -1,12 +1,13 @@
 <?php
-session_start;
+session_start();
 include("datenbank.php");
 
 if(isset($_GET['login'])) {
     $email = $_POST['email'];
     $passwort = $_POST['passwort'];
 
-    $statement = $pdo->prepare("SELECT * FROM 'users' WHERE email = email");
+
+    $statement = $pdo->prepare("SELECT * FROM 'users' WHERE email='email'");
     $result = $statement->execute(array('email' => $email));
     $user = $statement->fetch();
 
@@ -23,10 +24,10 @@ if(isset($_GET['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Login1</title>
 </head>
 <body>
-
+<h1> Log dich ein! </h1>
 <?php
 if(isset($errorMessage)) {
     echo $errorMessage;
