@@ -30,7 +30,7 @@ echo $profil;
                 <h3>Meine Posts:</h3>
 
                 <?php
-                $statement = $db->prepare("SELECT 'Hdm Email' FROM 'postings' WHERE $email='Hdm Email'");
+                $statement = $db->prepare("SELECT 'text','bild','gefühl' FROM 'postings' WHERE $email='Hdm Email'");
                 $result = $statement->execute();
                 ?>
             </div>
