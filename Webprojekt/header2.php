@@ -34,10 +34,6 @@
                             <li class="divider"></li>
                             <form action="logout.php">
                                 <input type="submit" value="Logout"
-
-
-                        </select>
-                    </li>
                 </ul>
               </div>
             </div>
