@@ -1,13 +1,16 @@
 <?php
 session_start();
-include("datenbank_2.php");
+include_once ("datenbank.php");
 
 
 if(isset($_GET['login'])) {
     $email = $_POST['email'];
     $passwort = $_POST['passwort'];
 
-    $statement = $pdo->prepare("SELECT * FROM users WHERE email = 'email'");
+
+
+
+    $statement = $pdo->prepare("SELECT * FROM users WHERE email = 'email' ");
     $result = $statement->execute(array('email' => $email));
     echo $result;
     $user = $statement->fetch();
@@ -43,7 +46,7 @@ if(isset($errorMessage)) {
 ?>
 <div>
 <form action="?login=1" method="post">
-    E-Mailv:<br>
+    E-Mail:<br>
     <input type="email"  name="email"><br><br>
 
     Dein Passwort:<br>
