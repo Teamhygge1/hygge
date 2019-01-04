@@ -1,0 +1,40 @@
+body{ background-image: url("fog.jpg");
+
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;}
+
+form{ border: medium
+border-color: #fbfcfa;
+}
+
+h1 {
+    font:"Comic Sans MS";
+font-size: 60px;
+    color: #eeefed;
+   text-align-all: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25%;
+    outline-color: #00001a;
+}
+
+div {
+
+position: absolute;
+    margin: auto;
+    font: "Courier New";
+    vertical-align: middle;
+    horiz-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:25%;
+    background-color: rgba(207, 208, 206, 0.17);
+
+}
+
