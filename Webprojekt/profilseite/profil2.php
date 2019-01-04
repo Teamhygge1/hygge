@@ -2,7 +2,12 @@
 require('../header2.php');
 require('../datenbank.php');
 
-$email = "jg119@hdm-stuttgart.de";
+$email = $_POST['user'];
+$password = $_POST['passwort'];
+
+if ($email =='email' AND $password=='password') {
+}
+
 $select_sql = $db->prepare("SELECT 'HdM Email' FROM Profil");
 $profil = $select_sql->execute();
 echo $profil;
@@ -30,7 +35,7 @@ echo $profil;
                 <h3>Meine Posts:</h3>
 
                 <?php
-                $statement = $db->prepare("SELECT 'text','bild','gefühl' FROM 'postings' WHERE $email='Hdm Email'");
+                $statement = $db->prepare("SELECT 'text','bild','gefühl' FROM 'postings' WHERE $email='HdM Email'");
                 $result = $statement->execute();
                 ?>
             </div>

@@ -10,7 +10,7 @@ if(isset($_GET['login'])) {
 
 
 
-    $statement = $pdo->prepare("SELECT * FROM users WHERE email = 'email' ");
+    $statement = $pdo->prepare("SELECT*FROM users WHERE email = 'email'");
     $result = $statement->execute(array('email' => $email));
     echo $result;
     $user = $statement->fetch();
