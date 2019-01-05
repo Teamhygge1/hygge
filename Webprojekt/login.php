@@ -34,7 +34,7 @@ if(isset($_GET['login'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="Login_CSS.css" media="screen" />
+  <!--  <link rel="stylesheet" type="text/css" href="Login_CSS.css" media="screen" /> -->
     <title>Login1</title>
 </head>
 <body>
