@@ -2,22 +2,7 @@
 
 include "datenbank.php";
 
-
-$email = $_POST['user'];
-$password = $_POST['passwort'];
-
-//ctoney ctoney123
-if ($email =='email' AND $password=='password') {
-    echo "You have logged in!";
-} else if ($email =='email' AND $password=='password') {
-    echo "Login erfolgreich! Herzlich Wilkommen!!";
-} else {
-    echo "Bitte zuerst einloggen!";
-}
-
-
-
-
+include "header2.php";
 
 
 
@@ -91,7 +76,7 @@ if ($email =='email' AND $password=='password') {
 
 
             <div  class="form-group">
-                <button id= Teilen type="submit" class="btn btn-primary">
+                <button id= Teilen type="submit" class="btn btn-primary" formmethod="post" >
                     Teilen!
                 </button>
 
@@ -109,7 +94,11 @@ if ($email =='email' AND $password=='password') {
 
 
 
-
 </body>
 
 
+<?php
+
+include "startseite2.php";
+
+?>

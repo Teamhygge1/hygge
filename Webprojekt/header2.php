@@ -32,7 +32,7 @@
                             <option value="p2"> Logout</option>7
                         </select>
                             <li class="divider"></li>
-                            <form action="logout.php">
+                            <form id=logout action="logout.php">
                                 <input type="submit" value="Logout"
                 </ul>
               </div>

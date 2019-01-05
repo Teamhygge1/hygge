@@ -29,7 +29,7 @@ if(isset($_GET['send']) ) {
     if(!isset($_POST['email']) || empty($_POST['email'])) {
         $error = "<b>Bitte eine E-Mail-Adresse eintragen</b>";
     } else {
-        $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $statement = $pdo->prepare("SELECT * FROM users WHERE email = email");
         $result = $statement->execute(array('email' => $_POST['email']));
         $user = $statement->fetch();
 
@@ -43,7 +43,7 @@ if(isset($_GET['send']) ) {
 
             $empfaenger = $user['email'];
             $betreff = "Neues Passwort für deinen Account auf www.php-einfach.de"; //Ersetzt hier den Domain-Namen
-            $from = "From: Vorname Nachname <absender@domain.de>"; //Ersetzt hier euren Name und E-Mail-Adresse
+            $from = "From: HdM-Hygge <as327@hdm-stuttgart.de>"; //Ersetzt hier euren Name und E-Mail-Adresse
             $url_passwortcode = 'http://localhost/passwortzuruecksetzen.php?userid='.$user['id'].'&code='.$passwortcode; //Setzt hier eure richtige Domain ein
             $text = 'Hallo '.$user['vorname'].',
 für deinen Account auf www.hdm-inside.de wurde nach einem neuen Passwort gefragt. Um ein neues Passwort zu vergeben, rufe innerhalb der nächsten 24 Stunden die folgende Website auf:
@@ -52,7 +52,7 @@ für deinen Account auf www.hdm-inside.de wurde nach einem neuen Passwort gefrag
 Sollte dir dein Passwort wieder eingefallen sein oder hast du dies nicht angefordert, so bitte ignoriere diese E-Mail.
  
 Viele Grüße,
-dein HdM-Inside-Team';
+dein HdM-Hygge-Team';
 
             mail($empfaenger, $betreff, $text, $from);
 
