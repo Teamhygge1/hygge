@@ -27,10 +27,6 @@
               <div class="pull-right">
                 <ul class="nav pull-right">
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Herzlich Willkommen auf deinem Profil<b class="caret"></b></a>
-                        <select name="auswahl">
-                            <option value="p1"> Einstellungen</option>
-                            <option value="p2"> Logout</option>7
-                        </select>
                             <li class="divider"></li>
                             <form action="logout.php">
                                 <input type="submit" value="Logout"

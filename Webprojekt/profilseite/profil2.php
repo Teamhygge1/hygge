@@ -5,7 +5,7 @@ require('../datenbank.php');
 $email = $_POST['user'];
 $password = $_POST['passwort'];
 
-if ($email =='email' AND $password=='password') {
+($email =='email' AND $password =='password') {
 }
 
 $select_sql = $db->prepare("SELECT 'HdM Email' FROM Profil");
@@ -26,11 +26,13 @@ echo $profil;
 
                 <div class="col-md-4"
                 <h3>Infos Über mich:</h3>
-
+                <label for="description">Schreibe etwas über dich...</label>
+                <input type="text" name="Infotext" maxlength="200">
                 <?php
 
                 echo $profil;
-                ?>      </div>
+                ?>
+            </div>
             <div>
                 <h3>Meine Posts:</h3>
 
@@ -44,3 +46,4 @@ echo $profil;
     </div>
 </div>
 </div>
+
