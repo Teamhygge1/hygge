@@ -5,23 +5,28 @@ require('../datenbank.php');
 $email = $_POST['user'];
 $password = $_POST['passwort'];
 
-($email =='email' AND $password =='password') {
-}
+($email =='email' AND $password =='password')
 
-$select_sql = $db->prepare("SELECT 'HdM Email' FROM Profil");
-$profil = $select_sql->execute();
-echo $profil;
-?>
+
+//$select_sql = $db->prepare("SELECT 'HdM Email' FROM Profil");
+//$profil = $select_sql->execute();
+//echo $profil;
+//?>
 
 
 <div id="Profilseite">
     <div class="col-4">
 
 
-        <div class="container container-content">
-            <div class="row">
-                <div class="col-md-4 img">
-                    <img src="IMG_5903.JPG" height="1000px">
+        <h2>Bild hochladen</font></h2>
+
+        <form method="post" action="image_upload.php" enctype="multipart/form-data">
+
+            Bilddatei:<br />
+
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="submit" value="Bild hochladen" name="submit">
+
                 </div>
 
                 <div class="col-md-4"
