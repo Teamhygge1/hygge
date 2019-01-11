@@ -8,6 +8,10 @@ body{background-image: url("hdm_login5.png");
     justify-content: center;
 }
 
-.info {
+.input {     width: 40%;
+            padding: 12px 20px;
+           margin: 8px 0;
+           box-sizing: border-box;
+       }
 
-}
+
