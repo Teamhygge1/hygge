@@ -14,8 +14,8 @@ if(isset($_GET['login'])) {
     $result = $statement->execute(array('email' => $email));
     echo $result;
     $user = $statement->fetch();
-    if ($user != false) {
-        echo "User nicht gefunden";
+   // if ($user != false) {
+        //echo "User nicht gefunden";
     }
 
     //Überprüfung des Passworts
@@ -29,7 +29,7 @@ if(isset($_GET['login'])) {
 
 
 
-}
+
 ?>
 <!DOCTYPE html>
 <html>

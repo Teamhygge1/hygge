@@ -13,6 +13,14 @@ $password = $_POST['passwort'];
 //echo $profil;
 //?>
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Profilseite</title>
+        <link rel="stylesheet" type="text/css" href="Main.css" media="screen"/>
+    </head>
+    <body>
+
 
 <div id="Profilseite">
     <div class="col-4">
@@ -29,10 +37,10 @@ $password = $_POST['passwort'];
 
                 </div>
 
-                <div class="col-md-4"
+                <div class="info"
                 <h3>Infos Über mich:</h3>
                 <label for="description">Schreibe etwas über dich...</label>
-                <input type="text" name="Infotext" maxlength="200">
+                <input type="text" name="Infotext" maxlength="400">
                 <?php
 
                 echo $profil;
@@ -42,7 +50,7 @@ $password = $_POST['passwort'];
                 <h3>Meine Posts:</h3>
 
                 <?php
-                $statement = $db->prepare("SELECT 'text','gefühl' FROM 'postings' WHERE $email='HdM Email'");
+                $statement = $db->prepare("SELECT 'text','gefühl' FROM 'posts' WHERE $email= 'HdM Email'");
                 $result = $statement->execute();
                 ?>
             </div>
@@ -51,4 +59,5 @@ $password = $_POST['passwort'];
     </div>
 </div>
 </div>
-
+    </body>
+</html>

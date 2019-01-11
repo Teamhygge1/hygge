@@ -1,7 +1,13 @@
-.img {
-    float: left;
+body{background-image: url("hdm_login5.png");
+
+    background-repeat:no-repeat;
+    background-position: center;
+    background-size: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.container-content {
-    margin-left: 500px !important;
+.info {
+
 }

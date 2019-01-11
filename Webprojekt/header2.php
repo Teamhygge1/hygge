@@ -22,7 +22,7 @@
           	<div class="nav-collapse collapse">
               <ul class="nav">
                   <li class="divider-vertical"></li>
-                  <li><a href="#"><i class="icon-home icon-white"></i> startseite</a></li>
+                  <li><a href="#"><i class="icon-home icon-white"></i> Startseite</a></li>
               </ul>
               <div class="pull-right">
                 <ul class="nav pull-right">
@@ -36,3 +36,7 @@
         </div>
     </div>
 </div>
+
+
+</body>
+</html>
