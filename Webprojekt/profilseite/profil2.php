@@ -26,7 +26,7 @@ $password = $_POST['passwort'];
 
              <h1>Herzlich Willkommen auf deiner Profilseite</h1>
 
-            <h2>Bild hochladen</font></h2>
+            <h4>Hüge ein Profilbild von dir hinzu</font></h4>
 
         <form method="post" action="image_upload.php" enctype="multipart/form-data">
 
@@ -36,16 +36,16 @@ $password = $_POST['passwort'];
             <input type="submit" value="Bild hochladen" name="submit">
 
     </div>
+                <div class="info">
                  <h3>Infos über mich: </h3>
 
-        <div class="container">
-            <div class="row">
+           <!-- <div class="row"> -->
                 <textarea name="Informationen" >Schreibe etwas über dich... </textarea>
                <!-- <span id="count"></span> -->
-            </div>
+            <!--</div> -->
         </div>
 
-            <div>
+            <div class="posts">
                 <h3>Meine Posts:</h3>
 
                 <?php

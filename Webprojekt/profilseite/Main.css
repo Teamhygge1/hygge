@@ -4,17 +4,27 @@ body{background-image: url("hdm_login5.png");
     background-position: center;
     background-size: auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
+   /*lign-items: center;
+    justify-content: center; */
 }
 /*Farbname*/
 h1 { color: #c9302c;}
 h2 { color: #c9302c;}
 h3 { color: white;}
-
-textarea {
-width: 400px;
+h4 { color: #c9302c;}
+textarea {  width: 400px;
 height: 300px;
 }
 
-header{
+
+.info{
+width: 40%;
+float: left;
+margin-left: 10px;
+padding-right: 10px;}
+
+.posts {
+width: 40%;
+float: right;
+margin-right: 10px;
+padding-left: 20px;}
