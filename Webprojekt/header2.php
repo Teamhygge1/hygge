@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
-<link href="profilseite/Main.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css"/>
+<link rel="stylesheet" type="text/css" href="profilseite/Main.css" media="screen" />
 
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -26,7 +26,7 @@
               </ul>
               <div class="pull-right">
                 <ul class="nav pull-right">
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Herzlich Willkommen auf deinem Profil<b class="caret"></b></a>
+                  <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Herzlich Willkommen auf deinem Profil<b class="caret"></b></a> -->
                             <li class="divider"></li>
                             <form id=logout action="logout.php">
                                 <input type="submit" value="Logout"

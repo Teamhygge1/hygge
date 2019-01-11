@@ -7,11 +7,14 @@ body{background-image: url("hdm_login5.png");
     align-items: center;
     justify-content: center;
 }
+/*Farbname*/
+h1 { color: #c9302c;}
+h2 { color: #c9302c;}
+h3 { color: white;}
 
-.input {     width: 40%;
-            padding: 12px 20px;
-           margin: 8px 0;
-           box-sizing: border-box;
-       }
+textarea {
+width: 400px;
+height: 300px;
+}
 
-
+header{
