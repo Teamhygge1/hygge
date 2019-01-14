@@ -23,7 +23,7 @@ $password = $_POST['passwort'];
 
     <div id="profilseite">
     <div class="col-4">
-
+            <div class="hintergrund">
              <h1>Herzlich Willkommen auf deiner Profilseite</h1>
 
             <h4>Hüge ein Profilbild von dir hinzu</font></h4>
@@ -53,6 +53,7 @@ $password = $_POST['passwort'];
                 $result = $statement->execute();
                 ?>
             </div>
+    </div>
     </div>
     </body>
 </html>

@@ -19,12 +19,30 @@ height: 300px;
 
 .info{
 width: 40%;
+/*height: 100% */
 float: left;
 margin-left: 10px;
 padding-right: 10px;}
 
 .posts {
 width: 40%;
+/*height: 100% */
 float: right;
 margin-right: 10px;
 padding-left: 20px;}
+
+.hintergrund {
+    background-color: #f6f6f6;
+    padding-top: 5px;
+    padding-bottom: 200px;
+    padding-left: 20px;
+    padding-right: 200px;
+    border-radius: 10px;
+    border-color: #fbfbfb;
+    border-width: 5px;
+    box-shadow:0 1px 0 #fbfbfb;
+
+}
+
+}
+
