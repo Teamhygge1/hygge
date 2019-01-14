@@ -54,15 +54,24 @@
             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
                 <!-- flight section -->
 
+                <form method ="post">
+                <fieldset>
+                    <legend> Hygellige Beiträge</legend>
 
-<?php
-$statement = $pdo->prepare("SELECT * FROM 'postings'");
-$result = $statement->execute();
-while ($user = $statement->fetch()){
-    echo "<a>".$user["text"]."</a>";
-}
+                    <?php
+                    $statement = $pdo->prepare ( "SELECT * FROM `Posts`; order by `desc`;");
+                    // $pdo = new PDO('mysql::host=mars.iuk.hdm-stuttgart.de;dbname=u-as327', 'as327', 'LahMaedae1');
+$sql = "SELECT * FROM Posts";
+                   foreach ($pdo->query($sql) as $row) {
+                        echo $row['User']." ".$row['Body']."<br />";
 
-?>
+                    }
+                    ?>
+</fieldset>
+                </form>
+
+
+
 
                <!-- <div class="bhoechie-tab-content">
                     <center>
