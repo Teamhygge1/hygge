@@ -28,7 +28,7 @@ $password = $_POST['passwort'];
 
             <h4>Hüge ein Profilbild von dir hinzu</font></h4>
 
-        <form method="post" action="image_upload.php" enctype="multipart/form-data">
+        <form method="post" action="Bild2.php" enctype="multipart/form-data">
 
             Bilddatei:<br />
 
