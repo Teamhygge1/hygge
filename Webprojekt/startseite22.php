@@ -28,23 +28,23 @@
         <div class="col-lg-5 col-md-12 col-sm-8 col-xs-9 bhoechie-tab-container">
             <div class=" bhoeccol-md-3 col-md-3 col-md-3 col-md-3hie-tab-menu">
                 <ul class="list-group">
-                    <a href="#" class="list-group-item active">
+                    <a href="#" class="list-group-item active"> <<option> value="p1"> Passwort</a></option>
+
                         <br/><br/><i class="glyphicon glyphicon-home"></i> Dein Profil <br/><br/>
 
 
-                    <a href="#" class="list-group-item ">
-                        <br/><br/><i class="glyphicon glyphicon-user"></i> Follower<br/><br/>
+                        <a href="#" class="list-group-item ">
+                            <br/><br/><i class="glyphicon glyphicon-user"></i> Follower<br/><br/>
 
 
-                    <!--</a>
-                    <a href="#" class="list-group-item">
-                        <br/><br/><i class="glyphicon glyphicon-search"></i>Suche<br/><br/> -->
+                            <!--</a>
+                            <a href="#" class="list-group-item">
+                                <br/><br/><i class="glyphicon glyphicon-search"></i>Suche<br/><br/> -->
 
-                   <!-- <a href="#" class="list-group-item">
-                        <br/><br/><i class="glyphicon glyphicon-cog"></i>Einstellungen<br/><br/>-->
-                        <select>
-                            <option value="p1"> Passwort</a></option>
-                            <option value="p2"> <a href="passwortvergessen.php.">Passwort vergessen</a></option>
+                            <!-- <a href="#" class="list-group-item">
+                                 <br/><br/><i class="glyphicon glyphicon-cog"></i>Einstellungen<br/><br/>-->
+                            <select>
+                                < <option value="p2"> <a href="passwortvergessen.php.">Passwort vergessen</a></option>
                             <option value="p3"> <a href="passwortzuruecksetzen.php">Passwort zurücksetzen</a></option>
 
                         </select>
