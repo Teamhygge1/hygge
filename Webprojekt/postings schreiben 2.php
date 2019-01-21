@@ -1,8 +1,9 @@
 <?php
 include 'datenbank.php';
+
 session_start();
 $Body = $_POST["Body"]; // get oder post
-
+// noch userid irgendwie abfragen und einlesen
 //$email = $_SESSION["email"];
 //Posts in Datenbank schreiben
 
@@ -10,12 +11,12 @@ $Body = $_POST["Body"]; // get oder post
 echo ($Body); //von riemke
 
 
-$sql = "INSERT INTO Posts (email, Body) VALUES ( ?, ?)";
-$statement = $pdo->prepare($sql); // vielleicht fehler
-$statement->execute(array("$email", "$Body")); // vielleicht fehler
+$sql = "INSERT INTO Posts (email, Body, User ) VALUES ( ?, ?,?)";
+$statement = $pdo->prepare($sql);
+$statement->execute(array("$email", "$Body", "$User"));
 $statement->bindParam(':email', $_POST["email"]);
 $statement->bindParam(':Body', $_POST["Body"]);
-
+$statement->bindParam(':User', $_POST["User"]);
 ?>
 
 <!DOCTYPE html>
