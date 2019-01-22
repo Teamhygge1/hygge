@@ -1,13 +1,17 @@
 
-
-
-
-
 <html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Wem folgen?</title>
+
+</head>
 
 <h1> Wem folgen? </h1>
 
 <h2> Hier siehst du alle Nutzer von HdM- Hygge! </h2>
+
+<h3> Folge deinen Freunden, um immer zu wissen was sie grade bewegt! </h3>
 
 <?php
 
@@ -20,12 +24,25 @@ $sql = "SELECT * FROM users";
 foreach ($pdo->query($sql) as $row) {
     echo
 
-        $row['email']." 
-    ".$row['vorname']." <br />";
+        $row['email']."<br>" ;
+
 }
 
 
 ?>
+
+
+<head>
+    <title>hygge</title>
+</head>
+
+
+<body>
+
+
+<button type="button" class="btn btn-follow" >follow</button>
+
+
 
 
 
