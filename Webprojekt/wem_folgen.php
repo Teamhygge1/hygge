@@ -7,6 +7,8 @@
 
 </head>
 
+<body>
+
 <h1> Wem folgen? </h1>
 
 <h2> Hier siehst du alle Nutzer von HdM- Hygge! </h2>
@@ -32,15 +34,6 @@ foreach ($pdo->query($sql) as $row) {
 ?>
 
 
-<head>
-    <title>hygge</title>
-</head>
-
-
-<body>
-
-
-<button type="button" class="btn btn-follow" >follow</button>
 
 
 
@@ -48,6 +41,9 @@ foreach ($pdo->query($sql) as $row) {
 
 
 
+
+
+</body>
 
 
 </html>
