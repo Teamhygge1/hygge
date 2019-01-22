@@ -15,6 +15,8 @@
 
 </head>
 
+<body>
+
 <div id="fullscreen_bg" class="fullscreen_bg"/>
 <div class="container">
     <div class="bhoechie-tab-content active">
@@ -71,6 +73,9 @@ $sql = "SELECT * FROM Posts";
                 </form>
 
 
+                <form id=wemfolgen action="wem_folgen.php">
+                    <input type="submit" value="Wem folgen?">
+                </form>
 
 
                <!-- <div class="bhoechie-tab-content">
@@ -101,3 +106,6 @@ $sql = "SELECT * FROM Posts";
         </div>
     </div>
 </div>  kommentar kommentar -->
+
+            </div> </div>
+</body>
