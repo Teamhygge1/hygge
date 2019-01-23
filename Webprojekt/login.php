@@ -12,11 +12,10 @@ if(isset($_GET['login'])) {
 
     $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email ");
     $result = $statement->execute(array('email' => $email));
-    echo $result;
     $user = $statement->fetch();
 
     //Überprüfung des Passworts
-    if ($user != false && password_verify($passwort, $user['passwort'])) {
+    if ($user !== false && password_verify($passwort, $user['passwort'])) {
         $_SESSION['userid'] = $user['id'];
         die('Login erfolgreich. Weiter zu <a href="startseite22.php">internen Bereich</a>');
     } else {
