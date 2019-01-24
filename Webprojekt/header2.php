@@ -23,14 +23,16 @@
               <ul class="nav">
                   <li class="divider-vertical"></li>
                   <li><a href="#"><i class="icon-home icon-white"></i> Startseite</a></li>
-                  <form method="post" action="startseite22.php" enctype="multipart/form-data">
+                  <form method="get" action="startseite22.php" id="startseite" enctype="multipart/form-data">
+                  </form>
               </ul>
               <div class="pull-right">
                 <ul class="nav pull-right">
                   <!--  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Herzlich Willkommen auf deinem Profil<b class="caret"></b></a> -->
                             <li class="divider"></li>
-                            <form method="post" action="profilseite/logout.php" enctype="multipart/form-data">
-                               <input type="submit" value="Logout"
+                            <form method="get" action="profilseite/logout.php" id="logout" enctype="multipart/form-data">
+                            </form>
+                               <input type="submit" value="Logout">
                 </ul>
               </div>
             </div>

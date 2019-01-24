@@ -1,7 +1,23 @@
 <?php
 require('../header2.php');
 require('../datenbank.php');
+session_start();
+$Informationen = $_POST["Informationen"]; // get oder post
+// noch userid irgendwie abfragen und einlesen
+//$email = $_SESSION["email"];
+//Posts in Datenbank schreiben
+
+
+echo ($Informationen); //von riemke
+
+
+$sql = "INSERT INTO profil (User, Informationen) VALUES ( ?, ?)";
+$statement = $pdo->prepare($sql);
+$statement->execute(array("$User", "$Informationen"));
+$statement->bindParam(':Informationen', $_POST["Informationen"]);
+$statement->bindParam(':User', $_POST["User"]);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="de">
@@ -20,6 +36,7 @@ require('../datenbank.php');
             <h4>Hüge ein Profilbild von dir hinzu</font></h4>
 
         <form method="post" action="Bild.php" enctype="multipart/form-data">
+        </form>
 
            <!-- Bilddatei:<br /> -->
 
@@ -29,19 +46,26 @@ require('../datenbank.php');
     </div>
                 <div class="info">
                  <h3>Infos über mich: </h3>
+                    <form method="post" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
+                       <!-- <p><label>Meine Infos:<br></label</p> -->
+                        <textarea name="Informationen">Schreibe etwas über dich...</textarea></label</p>
+                        <input type="submit" value="speichern">
+                    </form>
+                </div>
 
-           <!-- <div class="row"> -->
+                    <!-- <div class="row">
                 <textarea name="Informationen" >Schreibe etwas über dich... </textarea>
+                    <form method="post" action="Infospeichern.php" id="info" enctype="multipart/form-data">
                     <input type="submit" value="Speichern">
-                    <form method="post" action="Infospeichern.php" enctype="multipart/form-data">
+                    </form>
                <!-- <span id="count"></span> -->
             <!--</div> -->
-        </div>
 
             <div class="posts">
                 <h3>Meine Posts:</h3>
 
-                <form method="post" action="postrauslesen.php" enctype="multipart/form-data">
+                <form method="get" action="postrauslesen.php" id="posts" enctype="multipart/form-data">
+                </form>
             </div>
     </div>
     </div>
