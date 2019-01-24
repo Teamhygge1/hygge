@@ -1,0 +1,79 @@
+body{ background-image: url("hdm_login5.png");
+
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+form{ border: medium;
+    border-color: #fbfcfa;
+    align-items: center;
+    justify-content: center;
+margin-left: 40%;
+}
+
+
+.container {
+    padding: 25px;
+    margin-top: 10%;
+}
+
+
+
+
+.form-register {
+    background-color: #eaebe9;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    border-color: #fbfbfb;
+    border-width: 5px;
+    box-shadow:0 1px 0 #fbfbfb;
+    font-family: Verdana;
+
+}
+
+
+h1 { font-family: Verdana;
+    border:0 solid #fff;
+    padding-bottom:10px;
+    text-align: center;
+    color: #de1a39;
+    border-bottom-width:1px;
+    padding-bottom:10px;
+    outline-color: #00001a;
+
+}
+
+h2 {  font-family: Verdana;
+    border:0 solid #fff;
+    border-bottom-width:1px;
+    padding-bottom:10px;
+    text-align: center;
+    color: #fefffd;
+    outline-color: #00001a;
+    outline: auto;
+
+
+}
+
+.wrapper {
+    text-align: center;
+}
+
+
+.button
+{
+    border: medium;
+    border-color: #fbfcfa;
+    align-items: center;
+    justify-content: center;
+
+
+}

@@ -6,9 +6,14 @@ include("datenbank.php");
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Registrierung</title>
+    <link rel="stylesheet" type="text/css" href="register_CSS.css" media="screen" />
 </head>
 <body>
+
+
+
 
 <?php
 $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
@@ -34,7 +39,7 @@ if(isset($_GET['register'])) {
 
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
-        $statement = $pdo->prepare("SELECT * FROM users WHERE email = email ");
+        $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email ");
         $result = $statement->execute(array('email' => $email));
         $user = $statement->fetch();
 
@@ -63,6 +68,14 @@ if(isset($_GET['register'])) {
 if($showFormular) {
     ?>
 
+<div class="container">
+
+<div class="form-register">
+
+    <h1> Registriere dich jetzt!</h1> <br>
+
+    <h2> Werde Teil der HdM- Hygge Community und bleibe Up to date was auf dem Campus so geht!</h2> <br>
+
     <form action="?register=1" method="post">
         E-Mail:<br>
         <input type="email"  name="email"><br><br>
@@ -73,17 +86,27 @@ if($showFormular) {
         Passwort wiederholen:<br>
         <input type="password"  name="passwort2"><br><br>
 
+
+        <div class="wrapper">
+
+
+       <form class="button">
         <input type="submit" value="Los gehts!">
 
-    </form>
+       </form>
+
+    </form> <br>
 
 
-        <form action="login.php">
+        <form class="button" action="login.php"> <br>
             <input type="submit" value="Bereits dabei? Log dich ein!">
 
+        </form>
+       </div>
 
+    </div>
 
-
+</div>
 
 
     <?php

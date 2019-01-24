@@ -1,40 +1,77 @@
-body{ background-image: url("fog.jpg");
+ body{ background-image: url("hdm_login5.png");
 
     background-repeat:no-repeat;
     background-position:center;
     background-size: auto;
     display: flex;
     align-items: center;
-    justify-content: center;}
+    justify-content: center;  }
 
-form{ border: medium
+
+
+form{ border: medium;
 border-color: #fbfcfa;
 }
 
-h1 {
-    font:"Comic Sans MS";
-font-size: 60px;
-    color: #ef42a4;
-   text-align-all: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 25%;
-    outline-color: #00001a;
-}
 
-div {
+ .container {
 
-position: absolute;
-    margin: auto;
-    font: "Courier New";
-    vertical-align: middle;
+     margin-top: 15%;
+     padding: 25px;
+ }
+
+
+
+
+ .form-login {
+     background-color: #f6f6f6;
+     padding-top: 5px;
+     padding-bottom: 10px;
+     padding-left: 20px;
+     padding-right: 20px;
+     border-radius: 10px;
+     border-color: #fbfbfb;
+     border-width: 5px;
+     box-shadow:0 1px 0 #fbfbfb;
+
+ }
+
+
+ h1 {
+     font-family:"Verdana";
+     border:0 solid #fff;
+     border-bottom-width:1px;
+     padding-bottom:10px;
+     text-align: center;
+     color: #de1a39;
+ }
+
+
+ .wrapper {
+     text-align: center;
+ }
+
+
+/* fieldset {
+
+    border-color: #cfd0ce;
+    font-family: Verdana;
     horiz-align: center;
+    vertical-align:center;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top:25%;
-    background-color: rgba(207, 208, 206, 0.17);
+    background-color: rgb(247, 248, 246);
+    padding: 20px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
 
-}
+
+
+} */
+
+
+
+
 

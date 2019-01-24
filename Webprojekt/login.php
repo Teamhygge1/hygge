@@ -14,9 +14,6 @@ if(isset($_GET['login'])) {
     $result = $statement->execute(array('email' => $email));
     echo $result;
     $user = $statement->fetch();
-   // if ($user != false) {
-        //echo "User nicht gefunden";
-    }
 
     //Überprüfung des Passworts
     if ($user != false && password_verify($passwort, $user['passwort'])) {
@@ -28,36 +25,60 @@ if(isset($_GET['login'])) {
 
 
 
-
-
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="Login_CSS.css" media="screen" />
-    <title>Login1</title>
+    <title>Login</title>
+
 </head>
 <body>
-<h1> Log dich ein! </h1>
+
+
+
 <?php
+
+
+
 if(isset($errorMessage)) {
     echo $errorMessage;
 }
 ?>
-<div>
+
+
+
+<div class="container">
+
+
+    <div class="form-login">
+        <h1> Log dich ein! </h1> <br>
+
 <form action="?login=1" method="post">
-    E-Mail:<br>
-    <input type="email"  name="email"><br><br>
+    <input type="email"  name="email" placeholder="E-Mail"><br><br>
 
-    Dein Passwort:<br>
-    <input type="password"  name="passwort"><br>
+    <br>
+    <input type="password"  name="passwort" placeholder="Passwort"> <br>
 
-    <input type="submit" value="Abschicken">
+    <input type="submit" value="Login">
 </form>
 
+        <br>
 
-<form action="passwortvergessen.php">
-    <input type="submit" value="Passwort vergessen?">
+        <div class="wrapper">
+
+
+
+            <form action="register.php"> <br>
+                <input type="submit" value="Noch nicht dabei? Registrieren!">
+
+            </form>
+
+        </div>
+        </div>
 </div>
+
+
 </body>
 </html>
