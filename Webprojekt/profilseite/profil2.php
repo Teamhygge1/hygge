@@ -1,21 +1,12 @@
 <?php
 require('../header2.php');
 require('../datenbank.php');
-
-$email = $_POST['user'];
-$password = $_POST['passwort'];
-
-($email =='email' AND $password =='password')
-
-
-//$select_sql = $db->prepare("SELECT 'HdM Email' FROM Profil");
-//$profil = $select_sql->execute();
-//echo $profil;
-//?>
+?>
 
 <!DOCTYPE html>
-<html>
+<html lang="de">
     <head>
+        <meta charset="UTF-8">
         <title>Profilseite</title>
         <link rel="stylesheet" type="text/css" href="Main.css" media="screen"/>
     </head>
@@ -28,12 +19,12 @@ $password = $_POST['passwort'];
 
             <h4>Hüge ein Profilbild von dir hinzu</font></h4>
 
-        <form method="post" action="Bild2.php" enctype="multipart/form-data">
+        <form method="post" action="Bild.php" enctype="multipart/form-data">
 
-            Bilddatei:<br />
+           <!-- Bilddatei:<br /> -->
 
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Bild hochladen" name="submit">
+            <input type="submit" value="Bild hochladen">
 
     </div>
                 <div class="info">
@@ -41,6 +32,8 @@ $password = $_POST['passwort'];
 
            <!-- <div class="row"> -->
                 <textarea name="Informationen" >Schreibe etwas über dich... </textarea>
+                    <input type="submit" value="Speichern">
+                    <form method="post" action="Infospeichern.php" enctype="multipart/form-data">
                <!-- <span id="count"></span> -->
             <!--</div> -->
         </div>
@@ -48,10 +41,7 @@ $password = $_POST['passwort'];
             <div class="posts">
                 <h3>Meine Posts:</h3>
 
-                <?php
-                $statement = $db->prepare("SELECT 'text','gefühl' FROM 'posts' WHERE $email= 'HdM Email'");
-                $result = $statement->execute();
-                ?>
+                <form method="post" action="postrauslesen.php" enctype="multipart/form-data">
             </div>
     </div>
     </div>
