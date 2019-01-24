@@ -37,6 +37,8 @@ if(isset($_GET['register'])) {
         $error = true;
     }
 
+
+
     //Überprüfe, dass die E-Mail-Adresse noch nicht registriert wurde
     if(!$error) {
         $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email ");
@@ -68,6 +70,9 @@ if(isset($_GET['register'])) {
 if($showFormular) {
     ?>
 
+
+
+
 <div class="container">
 
 <div class="form-register">
@@ -78,13 +83,14 @@ if($showFormular) {
 
     <form action="?register=1" method="post">
         E-Mail:<br>
-        <input type="email"  name="email"><br><br>
+        <input type="email"  name="email" placeholder="E-Mail"><br><br>
+
 
         Dein Passwort:<br>
-        <input type="password"  name="passwort"><br>
+        <input type="password"  name="passwort" placeholder="Passwort"><br>
 
         Passwort wiederholen:<br>
-        <input type="password"  name="passwort2"><br><br>
+        <input type="password"  name="passwort2" placeholder="Passwort wiederholen"><br><br>
 
 
         <div class="wrapper">

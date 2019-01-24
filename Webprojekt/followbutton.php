@@ -1,4 +1,11 @@
-<?php ?>
+<?php
+include_once "datenbank.php";
+$statement = $pdo->prepare ( "SELECT email FROM `users`");
+foreach ($pdo->query($sql) as $row) {
+    echo $row['email']." ".$row['Body']."<br />";
+
+}
+?>
 <html>
 <head>
     <title>hygge</title>

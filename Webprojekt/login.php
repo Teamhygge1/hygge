@@ -22,8 +22,6 @@ if(isset($_GET['login'])) {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";
     }
 
-
-
 }
 ?>
 <!DOCTYPE html>
@@ -36,7 +34,24 @@ if(isset($_GET['login'])) {
 <body>
 
 
+<?php
 
+    if (isset($SESSION['id'])) {
+
+     if ($_SESSION['id']==1) { //Check ob man eingeloggt ist
+echo "Du bist eingeloggt, als User #1";
+
+
+}
+
+else { echo "Du musst dich zuerst einloggen!";
+
+}
+}
+
+
+
+?>
 <?php
 
 
@@ -56,7 +71,6 @@ if(isset($errorMessage)) {
 
 <form action="?login=1" method="post">
     <input type="email"  name="email" placeholder="E-Mail"><br><br>
-
     <br>
     <input type="password"  name="passwort" placeholder="Passwort"> <br>
 

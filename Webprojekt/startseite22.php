@@ -73,7 +73,7 @@ $sql = "SELECT * FROM Posts";
                 </form>
 
 
-                <form id=wemfolgen action="wem_folgen.php">
+                <form id=wemfolgen action="users_hygge.php">
                     <input type="submit" value="Wem folgen?">
                 </form>
 
