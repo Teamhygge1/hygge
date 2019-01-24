@@ -1,21 +1,28 @@
 <?php
 require('../header2.php');
 require('../datenbank.php');
+session_start();
+$Informationen = $_POST["Informationen"]; // get oder post
+// noch userid irgendwie abfragen und einlesen
+//$email = $_SESSION["email"];
+//Posts in Datenbank schreiben
 
-$email = $_POST['user'];
-$password = $_POST['passwort'];
 
-($email =='email' AND $password =='password')
+echo ($Informationen); //von riemke
 
 
-//$select_sql = $db->prepare("SELECT 'HdM Email' FROM Profil");
-//$profil = $select_sql->execute();
-//echo $profil;
-//?>
+$sql = "INSERT INTO profil (User, Informationen) VALUES ( ?, ?)";
+$statement = $pdo->prepare($sql);
+$statement->execute(array("$User", "$Informationen"));
+$statement->bindParam(':Informationen', $_POST["Informationen"]);
+$statement->bindParam(':User', $_POST["User"]);
+?>
+
 
 <!DOCTYPE html>
-<html>
+<html lang="de">
     <head>
+        <meta charset="UTF-8">
         <title>Profilseite</title>
         <link rel="stylesheet" type="text/css" href="Main.css" media="screen"/>
     </head>
@@ -28,30 +35,37 @@ $password = $_POST['passwort'];
 
             <h4>Hüge ein Profilbild von dir hinzu</font></h4>
 
-        <form method="post" action="Bild2.php" enctype="multipart/form-data">
+        <form method="post" action="Bild.php" enctype="multipart/form-data">
+        </form>
 
-            Bilddatei:<br />
+           <!-- Bilddatei:<br /> -->
 
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Bild hochladen" name="submit">
+            <input type="submit" value="Bild hochladen">
 
     </div>
                 <div class="info">
                  <h3>Infos über mich: </h3>
+                    <form method="post" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
+                       <!-- <p><label>Meine Infos:<br></label</p> -->
+                        <textarea name="Informationen">Schreibe etwas über dich...</textarea></label</p>
+                        <input type="submit" value="speichern">
+                    </form>
+                </div>
 
-           <!-- <div class="row"> -->
+                    <!-- <div class="row">
                 <textarea name="Informationen" >Schreibe etwas über dich... </textarea>
+                    <form method="post" action="Infospeichern.php" id="info" enctype="multipart/form-data">
+                    <input type="submit" value="Speichern">
+                    </form>
                <!-- <span id="count"></span> -->
             <!--</div> -->
-        </div>
 
             <div class="posts">
                 <h3>Meine Posts:</h3>
 
-                <?php
-                $statement = $db->prepare("SELECT 'text','gefühl' FROM 'posts' WHERE $email= 'HdM Email'");
-                $result = $statement->execute();
-                ?>
+                <form method="get" action="postrauslesen.php" id="posts" enctype="multipart/form-data">
+                </form>
             </div>
     </div>
     </div>
