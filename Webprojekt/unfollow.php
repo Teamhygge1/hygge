@@ -12,7 +12,7 @@ $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
 $sql = "DELETE FROM following  WHERE email=:email AND following=:email";
 
 $statement = $pdo->prepare($sql);
-$statement->execute(array(":email"=>"$email", ":following"=>"$following"));
+$statement->execute(array(":email"=>"$email", ":following"=>"$andere")); //Gucken ob Variablen stimmen
 
 
 header("Location: profil_anderer.php?profilname=$email");

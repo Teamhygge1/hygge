@@ -2,7 +2,7 @@
 include('../header2.php');
 require('../datenbank.php');
 session_start();
-$id_andere = $_GET["andere"];
+$id_andere = $_GET["id_andere"];
 $Informationen = $_POST["Informationen"]; // get oder post
 // noch userid irgendwie abfragen und einlesen
 //$email = $_SESSION["email"];
@@ -35,21 +35,21 @@ echo ($Informationen); //von riemke
         </div>
         <div class="info">
             <h3>Infos über <?php echo $id_andere?>: </h3>
-            <form method="get" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
-                <!-- <p><label>Meine Infos:<br></label</p> -->
-                <textarea name="Informationen"></textarea>
-                <?php
-                session_start();
-                $sql = "SELECT Informationen FROM profil";
-                foreach ($pdo->query($sql) as $row) {
-                    echo $row['Informationen'] . "<br />";
-                }
-                ?>
+            <?php
+            $sql = "SELECT 'Informationen' FROM `profil` WHERE email=:$id_andere";
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":email"=>"$id_andere"));
+            $statement->bindParam(':email', $_SESSION["email"]);
+            while ($row=$statement->fetch()) {
+                $email = $row['email'];
+                echo "<br/>
+                        " . $row['Informationen'] . "<br/>";
+            }
+            ?>
 
-            </form>
         </div>
 
-        div class="posts">
+        <div class="posts">
 
         <h3> Posts:</h3>
         <?php
@@ -70,3 +70,4 @@ echo ($Informationen); //von riemke
     </div>
 </div>
 </body>
+</html>
