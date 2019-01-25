@@ -1,4 +1,8 @@
 <?php
+include ("../datenbank.php");
+session_start();
+$email = $_SESSION["email"];
+
 if (isset($_POST['submit'])){
     $file = $_FILES['BildZumHochladen'];
 
@@ -19,7 +23,13 @@ if (isset($_POST['submit'])){
                 $fileNameNew = uniqid('', true).".".$fileActualExt;
                 $fileDestination = '/home/jg119/public_html/Webprojekt/profilseite/upload/'.$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination );
-                header("Location: Bild2.php?uploadsuccess");
+               $bild_id = $fileNameNew;
+               $sql = "UPDATE users SET bild_id=:bild_id_neu WHERE email=:email";
+               $statement = $pdo->prepare($sql);
+               $statement->execute(array("bild_id_neu"=>$bild_id,"email"=>$email));
+                echo $email;
+                echo $bild_id;
+
             } else {
                 echo "Dein Bild ist zu groß";
             }

@@ -5,9 +5,9 @@ include_once ("datenbank.php"); // Datenbankverbindung herstellen
 
 if(isset($_GET['login'])) {
     $email = $_POST['email'];
-    //$id = $_SESSION["email"];
+    $_SESSION["email"] = $email;
     $passwort = $_POST['passwort'];
-
+}
 
 
 
@@ -25,7 +25,7 @@ if(isset($_GET['login'])) {
 
 
 
-}
+
 ?>
 <!DOCTYPE html>
 <html>

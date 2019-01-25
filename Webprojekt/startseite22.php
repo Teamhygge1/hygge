@@ -3,7 +3,6 @@ include("header2.php");
 include_once ("datenbank.php");
 include ("postings schreiben 2.php");
 session_start();
-$id = $_SESSION["email"];
 ?>
 
  <link rel="stylesheet" href="Starteite_style.css" >
@@ -25,7 +24,7 @@ $id = $_SESSION["email"];
 <div class="container">
     <div class="bhoechie-tab-content active">
 
-        <h2 style="margin-top: 0;color:#00001a">Willkommen zurück <?php echo $user ?> </h2>
+        <h2 style="margin-top: 0;color:#00001a">Willkommen zurück <?php echo $email ?> </h2>
 
         <!-- eigenes Profil anzeigen? -->
 
@@ -37,7 +36,7 @@ $id = $_SESSION["email"];
                     <a href="#" class="list-group-item active">
 
                         <!--<br/><br/><i class="glyphicon glyphicon-home"></i> Dein Profil <br/><br/>-->
-                        <form action="profilseite/profil2.php"> <br>
+                        <form action="profilseite/profil2.php?"> <br>
                             <input type="submit" value="Dein Profil">
 
                         </form>

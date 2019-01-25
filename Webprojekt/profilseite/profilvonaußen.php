@@ -10,9 +10,6 @@ $Informationen = $_POST["Informationen"]; // get oder post
 
 
 echo ($Informationen); //von riemke
-
-
-
 ?>
 
 
@@ -21,7 +18,6 @@ echo ($Informationen); //von riemke
 <head>
     <meta charset="UTF-8">
     <title>Profilseite</title>
-    <link rel="stylesheet" type="text/css" href="Main.css" media="screen"/>
 </head>
 <body>
 
