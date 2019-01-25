@@ -17,7 +17,7 @@ if (isset($_POST['submit'])){
         if ($fileError === 0){
             if ($fileSize < 1000000){
                 $fileNameNew = uniqid('', true).".".$fileActualExt;
-                $fileDestination = 'home/jg119/public_html/Webprojekt/profilseite/upload/'.$fileNameNew;
+                $fileDestination = '/home/jg119/public_html/Webprojekt/profilseite/upload/'.$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination );
                 header("Location: Bild2.php?uploadsuccess");
             } else {
@@ -32,3 +32,4 @@ if (isset($_POST['submit'])){
 
 
 }
+?>

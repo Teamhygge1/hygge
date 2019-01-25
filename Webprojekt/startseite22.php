@@ -1,4 +1,10 @@
-<?php include("header2.php"); include_once ("datenbank.php"); ?>
+<?php
+include("header2.php");
+include_once ("datenbank.php");
+include ("postings schreiben 2.php");
+session_start();
+$id = $_SESSION["email"];
+?>
 
  <link rel="stylesheet" href="Starteite_style.css" >
 
@@ -19,7 +25,7 @@
 <div class="container">
     <div class="bhoechie-tab-content active">
 
-        <h2 style="margin-top: 0;color:#00001a">Willkommen zurück </h2>
+        <h2 style="margin-top: 0;color:#00001a">Willkommen zurück <?php echo $user ?> </h2>
 
         <!-- eigenes Profil anzeigen? -->
 
@@ -30,7 +36,11 @@
                 <ul class="list-group">
                     <a href="#" class="list-group-item active">
 
-                        <br/><br/><i class="glyphicon glyphicon-home"></i> Dein Profil <br/><br/>
+                        <!--<br/><br/><i class="glyphicon glyphicon-home"></i> Dein Profil <br/><br/>-->
+                        <form action="profilseite/profil2.php"> <br>
+                            <input type="submit" value="Dein Profil">
+
+                        </form>
 
 
                         <a href="#" class="list-group-item ">
@@ -62,11 +72,12 @@
                         <p>
 
                     <?php
-                    $statement = $pdo->prepare ( "SELECT * FROM `Posts`; order by `desc`;");
+                    $statement = $pdo->prepare ( "SELECT * FROM `Posts` order by created_at DESC");
                     // $pdo = new PDO('mysql::host=mars.iuk.hdm-stuttgart.de;dbname=u-as327', 'as327', 'LahMaedae1');
 $sql = "SELECT * FROM Posts";
                    foreach ($pdo->query($sql) as $row) {
-                        echo $row['User']." schrieb: <br/>
+                       $email= $row['email'];
+                        echo "<a href='./profilseite/profilvonaußen.php?andere=$email'>".$email."</a> schrieb: <br/>
                         ".$row['Body']."<br/>";
                         echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
 

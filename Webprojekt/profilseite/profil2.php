@@ -1,7 +1,10 @@
+
+
 <?php
-require('../header2.php');
+include('../header2.php');
 require('../datenbank.php');
 session_start();
+$id = $_SESSION["email"];
 $Informationen = $_POST["Informationen"]; // get oder post
 // noch userid irgendwie abfragen und einlesen
 //$email = $_SESSION["email"];
@@ -35,7 +38,7 @@ $statement->bindParam(':User', $_POST["User"]);
 
             <h4>Hüge ein Profilbild von dir hinzu</font></h4>
 
-        <form method="post" action="Bild.php" enctype="multipart/form-data">
+        <form method="post" action="Bild2.php" enctype="multipart/form-data">
         </form>
 
            <!-- Bilddatei:<br /> -->
@@ -45,11 +48,13 @@ $statement->bindParam(':User', $_POST["User"]);
 
     </div>
                 <div class="info">
-                 <h3>Infos über mich: </h3>
+                 <h3>Infos über dich: </h3>
                     <form method="post" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
                        <!-- <p><label>Meine Infos:<br></label</p> -->
-                        <textarea name="Informationen">Schreibe etwas über dich...</textarea></label</p>
+                        <textarea name="Informationen">Schreibe etwas über dich...</textarea>
                         <input type="submit" value="speichern">
+
+
                     </form>
                 </div>
 
@@ -62,7 +67,7 @@ $statement->bindParam(':User', $_POST["User"]);
             <!--</div> -->
 
             <div class="posts">
-                <h3>Meine Posts:</h3>
+                <h3>Deine Posts:</h3>
 
                 <form method="get" action="postrauslesen.php" id="posts" enctype="multipart/form-data">
                 </form>

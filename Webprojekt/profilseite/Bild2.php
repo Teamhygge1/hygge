@@ -4,7 +4,11 @@
 ?>
 
 <!DOCTYPE html>
-  <html>
+  <html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <title>Bildupload</title>
+    </head>
     <body>
 
 <?php
