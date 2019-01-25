@@ -8,10 +8,11 @@ $User = $_POST ["User"]; // noch user irgendwie abfragen und einlesen
 //Posts in Datenbank schreiben
 
 
-echo ($Body); //von riemke
+echo ($Body);
+echo ($User); // riemke eingefügt
 
 
-$sql = "INSERT INTO Posts (email, Body, User ) VALUES ( ?, ?,?)";
+$sql = "INSERT INTO Posts (email, Body, User ) VALUES ( ?, ?, ?)";
 $statement = $pdo->prepare($sql);
 $statement->execute(array("$email", "$Body", "$User"));
 $statement->bindParam(':email', $_POST["email"]);
