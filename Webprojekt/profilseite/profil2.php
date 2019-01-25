@@ -23,6 +23,7 @@ $statement->bindParam(':email', $_SESSION["email"]);
 <!DOCTYPE html>
 <html lang="de">
     <head>
+        <link rel="stylesheet" type="text/css" href="profil2_css.css" media="screen" />
         <meta charset="UTF-8">
         <title>Profilseite</title>
     </head>

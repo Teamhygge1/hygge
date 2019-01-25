@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once "datenbankpasswort.php";
+include_once "datenbank.php";
 $meine_id = $_SESSION["login-id"];
 $user_id = $_GET['user_id'];
 ?>

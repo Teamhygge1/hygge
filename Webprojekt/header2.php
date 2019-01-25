@@ -1,10 +1,10 @@
 <?php
 session_start();
-
+include "datenbank.php";
 $email = $_SESSION["email"];
-if (!isset($_SESSION['email'])) {
-    header('location: login.php');
-}
+// if (!isset($_SESSION['email'])) {
+ //   header('location: login.php');
+// }
 ?>
 
 

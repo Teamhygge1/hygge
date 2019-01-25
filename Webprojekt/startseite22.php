@@ -36,7 +36,7 @@ session_start();
                     <a href="#" class="list-group-item active">
 
                         <!--<br/><br/><i class="glyphicon glyphicon-home"></i> Dein Profil <br/><br/>-->
-                        <form action="profilseite/profil2.php?"> <br>
+                        <form id= "deinprofil" action="profilseite/profil2.php?"> <br>
                             <input type="submit" value="Dein Profil">
 
                         </form>
@@ -52,12 +52,7 @@ session_start();
 
                             <!-- <a href="#" class="list-group-item">
                                  <br/><br/><i class="glyphicon glyphicon-cog"></i>Einstellungen<br/><br/>-->
-                            <select>
 
-                                < <option value="p2"> <a href="passwortvergessen.php.">Passwort vergessen</a></option>
-                                <option value="p3"> <a href="passwortzuruecksetzen.php">Passwort zurücksetzen</a></option>
-
-                            </select>
                         </a>
                 </ul>
             </div>

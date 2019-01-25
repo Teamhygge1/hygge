@@ -1,0 +1,27 @@
+body {
+
+  background-color: white;
+    font-family: Verdana;
+    position: relative;
+width: auto;
+    background-repeat: no-repeat;
+
+}
+
+.profilseite {
+
+
+    justify-content: center;
+    width: available;
+}
+
+h1 {
+    width: 200vh;
+    font-size: 400%;
+    color: #de1a39;
+    font-weight: bold;
+    text-align: center;
+
+
+
+}
