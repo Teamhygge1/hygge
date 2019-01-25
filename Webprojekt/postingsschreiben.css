@@ -12,5 +12,6 @@ fieldset {
 textarea {
     width: 300px;
     height: 4em;
+    padding : 10px;
 
 }
