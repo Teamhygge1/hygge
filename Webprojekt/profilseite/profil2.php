@@ -28,23 +28,33 @@ $statement->bindParam(':email', $_SESSION["email"]);
     </head>
     <body>
 
+
+
     <div id="profilseite">
     <div class="col-4">
             <div class="hintergrund">
              <h1>Herzlich Willkommen auf deiner Profilseite</h1>
 
-                <?php
-                echo $email;
-                ?>
+
 
             <h4>Füge ein Profilbild von dir hinzu</font></h4>
-
 
                 <form method="post" action="upload2.php" enctype="multipart/form-data">
 
                     <input type="file" name="BildZumHochladen" id="BildZumHochladen">
                     <input type="submit" value="Bild hochladen" name="submit">
 
+                    <?php
+                    $statement= $pdo->prepare("SELECT bild_id FROM users WHERE email=:email");
+                    $statement->execute(array(":email"=>"$email"));
+                    $statement->bindParam(':email', $_SESSION["email"]);
+
+                    while ($row=$statement->fetch()){
+                        $profilbild=$row['bild_id'];
+                        echo "<img src='upload/$profilbild'>";
+                    }
+
+                    ?>
 
                 </form>
 
@@ -72,8 +82,19 @@ $statement->bindParam(':email', $_SESSION["email"]);
 
             <div class="posts">
                 <h3>Deine Posts:</h3>
+                    <?php
+                    $sql = "SELECT * FROM `Posts` WHERE email=:email order by created_at DESC";
+                    $statement = $pdo->prepare($sql);
+                    $statement->execute(array(":email"=>"$email"));
+                    $statement->bindParam(':email', $_SESSION["email"]);
+                    while ($row=$statement->fetch())  {
+                        $email= $row['email'];
+                        echo "<br/>
+                        ".$row['Body']."<br/>";
+                        echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
 
-                <form method="get" action="postrauslesen.php" id="posts" enctype="multipart/form-data">
+                    }
+                    ?>
                 </form>
             </div>
     </div>

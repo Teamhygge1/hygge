@@ -27,8 +27,8 @@ if (isset($_POST['submit'])){
                $sql = "UPDATE users SET bild_id=:bild_id_neu WHERE email=:email";
                $statement = $pdo->prepare($sql);
                $statement->execute(array("bild_id_neu"=>$bild_id,"email"=>$email));
-                echo $email;
-                echo $bild_id;
+                header("location: profil2.php");
+
 
             } else {
                 echo "Dein Bild ist zu groß";
