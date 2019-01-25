@@ -2,23 +2,24 @@
 include 'datenbank.php';
 
 session_start();
-$Body = $_POST["Body"]; // get oder post
-// noch userid irgendwie abfragen und einlesen
+$Body = $_POST["Body"];// get oder post
+$User = $_POST ["User"]; // noch user irgendwie abfragen und einlesen
 //$email = $_SESSION["email"];
 //Posts in Datenbank schreiben
 
 
-echo ($Body); //von riemke
+echo ($Body);
+echo ($User); // riemke eingefügt
 
 
-$sql = "INSERT INTO Posts (email, Body, User ) VALUES ( ?, ?,?)";
+$sql = "INSERT INTO Posts (email, Body, User ) VALUES ( ?, ?, ?)";
 $statement = $pdo->prepare($sql);
 $statement->execute(array("$email", "$Body", "$User"));
 $statement->bindParam(':email', $_POST["email"]);
 $statement->bindParam(':Body', $_POST["Body"]);
 $statement->bindParam(':User', $_POST["User"]);
 ?>
-
+<link rel="stylesheet" href="postingsschreiben.css" >
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,7 +31,7 @@ $statement->bindParam(':User', $_POST["User"]);
 <form method="post" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
     <p><label>Dein Post:<br></label</p>
 
-    <textarea name="Body" cols="50" rows="8"></textarea></label</p>
+    <textarea name="Body" ></textarea> </label</p>
     <input type="submit" value="Posten">
 </form>
 
