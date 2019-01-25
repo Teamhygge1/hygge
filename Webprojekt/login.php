@@ -7,8 +7,6 @@ if(isset($_GET['login'])) {
     $email = $_POST['email'];
     $_SESSION["email"] = $email;
     $passwort = $_POST['passwort'];
-}
-
 
 
     $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email ");
@@ -18,14 +16,13 @@ if(isset($_GET['login'])) {
     //Überprüfung des Passworts
     if ($user !== false && password_verify($passwort, $user['passwort'])) {
         $_SESSION['userid'] = $user['id'];
-        die('Login erfolgreich. Weiter zu <a href="startseite22.php?user='.$email.'">internen Bereich</a>');
+        die('Login erfolgreich. Weiter zu <a href="startseite22.php?user=' . $email . '">internen Bereich</a>');
     } else {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";
     }
 
 
-
-
+}
 ?>
 <!DOCTYPE html>
 <html>

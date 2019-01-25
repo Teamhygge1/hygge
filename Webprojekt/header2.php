@@ -52,15 +52,72 @@ if (!isset($_SESSION['email'])) {
     </div>
 
     <ul class="nav navbar-nav navbar-right">
+ <?php
+
+ $sql = "SELECT * FROM Posts WHERE status='0'";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        $anzahl_benachrichtigungen = $statement->rowCount();
+
+        ?>
 
         <li class="dropdown">
 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="label label-pill label-danger count" style="border-radius:10px;"></span>
+                <span class="label label-pill label-danger count" style="border-radius:10px;"><?php echo $anzahl_notification ?></span>
                 <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
             </a>
 
-            <ul class="dropdown-menu"></ul>
+            <ul class="dropdown-menu">
+
+                <?php
+
+                if ($anzahl_benachrichtigungen > 0) {
+
+
+                    $query = $pdo->prepare($sql);
+                    $query->execute();
+                    $rows = array();
+
+
+                    while ($row = $query->fetch())
+                        $rows[] = $row;
+                    foreach ($rows as $row) {
+
+                        ?>
+
+                        <a class="dropdown-item"
+                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
+                            <small><i>
+                                    <?php
+                                    echo date('F j, Y, g:i a', strtotime($row['date']));
+                                    ?>
+                                </i></small>
+                            <br/>
+                            <div>
+                                Ein neuer Beitrag von
+                                <?php
+                                echo $row['email']; ?>:
+                                <br>
+                                <?php
+                                echo $row['body'] ?>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <?php
+                    }
+                    ?>
+
+                    <div class="dropdown-divider"></div>
+                    <?php
+
+                }
+                else {
+                    echo 'Keine neuen Nachrichten.';
+                }
+                ?>
+
+
+            </ul>
 
         </li>
 
