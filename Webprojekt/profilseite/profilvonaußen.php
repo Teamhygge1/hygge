@@ -49,12 +49,24 @@ echo ($Informationen); //von riemke
             </form>
         </div>
 
-        <div class="posts">
-            <h3>:</h3>
+        div class="posts">
 
-            <form method="get" action="postrauslesen.php" id="posts" enctype="multipart/form-data">
-            </form>
-        </div>
+        <h3> Posts:</h3>
+        <?php
+        $sql = "SELECT * FROM `Posts` WHERE email=:$id_andere order by created_at DESC";
+        $statement = $pdo->prepare($sql);
+        $statement->execute(array(":email"=>"$id_andere"));
+        $statement->bindParam(':email', $_SESSION["email"]);
+        while ($row=$statement->fetch())  {
+            $email= $row['email'];
+            echo "<br/>
+                        ".$row['Body']."<br/>";
+            echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
+
+        }
+        ?>
+        </form>
+    </div>
     </div>
 </div>
 </body>
