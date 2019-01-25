@@ -1,21 +1,22 @@
+
+
 <?php
-require('../header2.php');
+include('../header2.php');
 require('../datenbank.php');
 session_start();
+$email = $_SESSION["email"];
 $Informationen = $_POST["Informationen"]; // get oder post
 // noch userid irgendwie abfragen und einlesen
 //$email = $_SESSION["email"];
 //Posts in Datenbank schreiben
 
 
-echo ($Informationen); //von riemke
 
-
-$sql = "INSERT INTO profil (User, Informationen) VALUES ( ?, ?)";
+$sql = "INSERT INTO profil (email, Informationen) VALUES ( ?, ?)";
 $statement = $pdo->prepare($sql);
-$statement->execute(array("$User", "$Informationen"));
+$statement->execute(array("$email", "$Informationen"));
 $statement->bindParam(':Informationen', $_POST["Informationen"]);
-$statement->bindParam(':User', $_POST["User"]);
+$statement->bindParam(':email', $_SESSION["email"]);
 ?>
 
 
@@ -24,32 +25,50 @@ $statement->bindParam(':User', $_POST["User"]);
     <head>
         <meta charset="UTF-8">
         <title>Profilseite</title>
-        <link rel="stylesheet" type="text/css" href="Main.css" media="screen"/>
     </head>
     <body>
+
+
 
     <div id="profilseite">
     <div class="col-4">
             <div class="hintergrund">
              <h1>Herzlich Willkommen auf deiner Profilseite</h1>
 
-            <h4>Hüge ein Profilbild von dir hinzu</font></h4>
 
-        <form method="post" action="Bild.php" enctype="multipart/form-data">
-        </form>
 
-           <!-- Bilddatei:<br /> -->
+            <h4>Füge ein Profilbild von dir hinzu</font></h4>
 
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Bild hochladen">
+                <form method="post" action="upload2.php" enctype="multipart/form-data">
+
+                    <input type="file" name="BildZumHochladen" id="BildZumHochladen">
+                    <input type="submit" value="Bild hochladen" name="submit">
+
+                    <?php
+                    $statement= $pdo->prepare("SELECT bild_id FROM users WHERE email=:email");
+                    $statement->execute(array(":email"=>"$email"));
+                    $statement->bindParam(':email', $_SESSION["email"]);
+
+                    while ($row=$statement->fetch()){
+                        $profilbild=$row['bild_id'];
+                        echo "<img src='upload/$profilbild'>";
+                    }
+
+                    ?>
+
+                </form>
 
     </div>
                 <div class="info">
-                 <h3>Infos über mich: </h3>
+                 <h3>Infos über dich: </h3>
                     <form method="post" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
                        <!-- <p><label>Meine Infos:<br></label</p> -->
-                        <textarea name="Informationen">Schreibe etwas über dich...</textarea></label</p>
+                        <textarea name="Informationen" placeholder="Schreibe etwas über dich..."> <?php echo ($Informationen); //von riemke ?></textarea>
                         <input type="submit" value="speichern">
+
+
+
+
                     </form>
                 </div>
 
@@ -62,9 +81,20 @@ $statement->bindParam(':User', $_POST["User"]);
             <!--</div> -->
 
             <div class="posts">
-                <h3>Meine Posts:</h3>
+                <h3>Deine Posts:</h3>
+                    <?php
+                    $sql = "SELECT * FROM `Posts` WHERE email=:email order by created_at DESC";
+                    $statement = $pdo->prepare($sql);
+                    $statement->execute(array(":email"=>"$email"));
+                    $statement->bindParam(':email', $_SESSION["email"]);
+                    while ($row=$statement->fetch())  {
+                        $email= $row['email'];
+                        echo "<br/>
+                        ".$row['Body']."<br/>";
+                        echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
 
-                <form method="get" action="postrauslesen.php" id="posts" enctype="multipart/form-data">
+                    }
+                    ?>
                 </form>
             </div>
     </div>

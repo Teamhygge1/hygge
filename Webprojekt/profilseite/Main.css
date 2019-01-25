@@ -10,7 +10,7 @@ body{background-image: url("hdm_login5.png");
 /*Farbname*/
 h1 { color: #c9302c;}
 h2 { color: #c9302c;}
-h3 { color: white;}
+h3 { color: black;}
 h4 { color: #c9302c;}
 textarea {  width: 400px;
 height: 300px;
@@ -35,6 +35,7 @@ border-left: 10px;
 
 .hintergrund {
     background-color: #f6f6f6;
+    opacity: 0.5;
     padding-top: 5px;
     padding-bottom: 200px;
     padding-left: 20px;
@@ -43,8 +44,10 @@ border-left: 10px;
     border-color: #fbfbfb;
     border-width: 5px;
     box-shadow:0 1px 0 #fbfbfb;
-
+    background-position: center;
 }
+
+
 
 }
 

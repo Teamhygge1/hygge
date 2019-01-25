@@ -1,0 +1,17 @@
+fieldset {
+    padding: 10px;
+    font:80%/1 sans-serif;
+
+    float:left;
+    width:25%;
+    margin-right:2px;
+    padding-top:2px;
+    text-align:right;
+    font-weight:bold;
+}
+textarea {
+    width: 300px;
+    height: 4em;
+    padding : 10px;
+
+}

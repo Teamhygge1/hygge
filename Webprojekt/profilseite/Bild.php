@@ -14,8 +14,7 @@ if ($_POST) { // Fehlermeldungen
 
 
     if (empty($errors)) { 	// Datenbankabfrage, Bild hinzufügen, Personen und Schlagwörter verknüpfen
-        $insertbild = $db->prepare("INSERT INTO images (Dateiname)
-									   VALUES (:Dateiname)"); // SQL-Statement zum Hinzufügen eines Bildes
+        $insertbild = $db->prepare("INSERT INTO images (Dateiname) VALUES (:Dateiname)"); // SQL-Statement zum Hinzufügen eines Bildes
         $dateiname = $_POST['bild'];
         $bild = array();
 

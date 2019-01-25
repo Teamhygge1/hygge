@@ -5,9 +5,8 @@ include_once ("datenbank.php"); // Datenbankverbindung herstellen
 
 if(isset($_GET['login'])) {
     $email = $_POST['email'];
+    $_SESSION["email"] = $email;
     $passwort = $_POST['passwort'];
-
-
 
 
     $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email ");
@@ -17,10 +16,11 @@ if(isset($_GET['login'])) {
     //Überprüfung des Passworts
     if ($user !== false && password_verify($passwort, $user['passwort'])) {
         $_SESSION['userid'] = $user['id'];
-        die('Login erfolgreich. Weiter zu <a href="startseite22.php">internen Bereich</a>');
+        die('Login erfolgreich. Weiter zu <a href="startseite22.php?user=' . $email . '">internen Bereich</a>');
     } else {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";
     }
+
 
 }
 ?>
@@ -34,24 +34,7 @@ if(isset($_GET['login'])) {
 <body>
 
 
-<?php
 
-    if (isset($SESSION['id'])) {
-
-     if ($_SESSION['id']==1) { //Check ob man eingeloggt ist
-echo "Du bist eingeloggt, als User #1";
-
-
-}
-
-else { echo "Du musst dich zuerst einloggen!";
-
-}
-}
-
-
-
-?>
 <?php
 
 
@@ -71,6 +54,7 @@ if(isset($errorMessage)) {
 
 <form action="?login=1" method="post">
     <input type="email"  name="email" placeholder="E-Mail"><br><br>
+
     <br>
     <input type="password"  name="passwort" placeholder="Passwort"> <br>
 
