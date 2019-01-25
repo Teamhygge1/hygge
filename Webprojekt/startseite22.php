@@ -15,8 +15,6 @@
 
 </head>
 
-<body>
-
 <div id="fullscreen_bg" class="fullscreen_bg"/>
 <div class="container">
     <div class="bhoechie-tab-content active">
@@ -30,7 +28,7 @@
         <div class="col-lg-5 col-md-12 col-sm-8 col-xs-9 bhoechie-tab-container">
             <div class=" bhoeccol-md-3 col-md-3 col-md-3 col-md-3hie-tab-menu">
                 <ul class="list-group">
-                    <a href="#" class="list-group-item active"> <<option> value="p1"> Passwort</a></option>
+                    <a href="#" class="list-group-item active">
 
                         <br/><br/><i class="glyphicon glyphicon-home"></i> Dein Profil <br/><br/>
 
@@ -46,6 +44,7 @@
                             <!-- <a href="#" class="list-group-item">
                                  <br/><br/><i class="glyphicon glyphicon-cog"></i>Einstellungen<br/><br/>-->
                             <select>
+
                                 < <option value="p2"> <a href="passwortvergessen.php.">Passwort vergessen</a></option>
                             <option value="p3"> <a href="passwortzuruecksetzen.php">Passwort zurücksetzen</a></option>
 
@@ -59,23 +58,25 @@
                 <form method ="post">
                 <fieldset>
                     <legend> Hygellige Beiträge</legend>
+                    <div class="w3-container">
+                        <p>
 
                     <?php
                     $statement = $pdo->prepare ( "SELECT * FROM `Posts`; order by `desc`;");
                     // $pdo = new PDO('mysql::host=mars.iuk.hdm-stuttgart.de;dbname=u-as327', 'as327', 'LahMaedae1');
 $sql = "SELECT * FROM Posts";
                    foreach ($pdo->query($sql) as $row) {
-                        echo $row['User']." ".$row['Body']."<br />";
+                        echo $row['User']." schrieb: <br/>
+                        ".$row['Body']."<br/>";
+                        echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
 
                     }
                     ?>
+                        </p></div>
 </fieldset>
                 </form>
 
 
-                <form id=wemfolgen action="wem_folgen.php">
-                    <input type="submit" value="Wem folgen?">
-                </form>
 
 
                <!-- <div class="bhoechie-tab-content">
@@ -106,6 +107,3 @@ $sql = "SELECT * FROM Posts";
         </div>
     </div>
 </div>  kommentar kommentar -->
-
-            </div> </div>
-</body>
