@@ -27,7 +27,7 @@ $statement->bindParam(':User', $_POST["User"]);
     <head>
         <meta charset="UTF-8">
         <title>Profilseite</title>
-        <link rel="stylesheet" type="text/css" href="Main.css" media="screen"/>
+        <!--<link rel="stylesheet" type="text/css" href="Main.css" media="screen"/> -->
     </head>
     <body>
 

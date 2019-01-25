@@ -12,11 +12,7 @@ $Informationen = $_POST["Informationen"]; // get oder post
 echo ($Informationen); //von riemke
 
 
-$sql = "INSERT INTO profil (User, Informationen) VALUES ( ?, ?)";
-$statement = $pdo->prepare($sql);
-$statement->execute(array("$User", "$Informationen"));
-$statement->bindParam(':Informationen', $_POST["Informationen"]);
-$statement->bindParam(':User', $_POST["User"]);
+
 ?>
 
 
@@ -32,32 +28,33 @@ $statement->bindParam(':User', $_POST["User"]);
 <div id="profilseite">
     <div class="col-4">
         <div class="hintergrund">
-            <h1>Herzlich Willkommen auf deiner Profilseite</h1>
+            <h1>Herzlich Willkommen auf der Profilseite von <?php echo $id_andere?> </h1>
 
-            <h4>Hüge ein Profilbild von dir hinzu</font></h4>
+            <h4>Das ist <?php echo $id_andere?> </h4>
 
-            <form method="post" action="Bild2.php" enctype="multipart/form-data">
+            <form method="get" action="Bild2.php" enctype="multipart/form-data">
             </form>
 
-            <!-- Bilddatei:<br /> -->
-
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Bild hochladen">
 
         </div>
         <div class="info">
-            <h3>Infos über dich: </h3>
-            <form method="post" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
+            <h3>Infos über <?php echo $id_andere?>: </h3>
+            <form method="get" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
                 <!-- <p><label>Meine Infos:<br></label</p> -->
-                <textarea name="Informationen">Schreibe etwas über dich...</textarea>
-                <input type="submit" value="speichern">
-
+                <textarea name="Informationen"></textarea>
+                <?php
+                session_start();
+                $sql = "SELECT Informationen FROM profil";
+                foreach ($pdo->query($sql) as $row) {
+                    echo $row['Informationen'] . "<br />";
+                }
+                ?>
 
             </form>
         </div>
 
         <div class="posts">
-            <h3>Deine Posts:</h3>
+            <h3>:</h3>
 
             <form method="get" action="postrauslesen.php" id="posts" enctype="multipart/form-data">
             </form>
