@@ -45,6 +45,7 @@ $statement->bindParam(':email', $_SESSION["email"]);
                     <input type="file" name="BildZumHochladen" id="BildZumHochladen">
                     <input type="submit" value="Bild hochladen" name="submit">
 
+
                 </form>
 
     </div>
