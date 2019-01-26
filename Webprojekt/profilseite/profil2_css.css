@@ -6,6 +6,9 @@ body {
 width: auto;
     background-repeat: no-repeat;
 
+
+
+
 }
 
 .profilseite {
@@ -21,7 +24,35 @@ h1 {
     color: #de1a39;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 50px;
+
+}
+
+.upload {
+
+    float: left;
+    margin: 30px;
+    padding-left: 30px;
+
+}
 
 
+.info {
 
+    float: left;
+
+}
+
+
+.posts {
+    float: right;
+    margin-left: 10%;
+    border: black;
+    border: 15px;
+    width: 200%;
+    background-color: rgba(69, 69, 68, 0.38);
+    height: 200px;
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
 }

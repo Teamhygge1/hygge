@@ -23,7 +23,7 @@ $statement->bindParam(':email', $_SESSION["email"]);
 <!DOCTYPE html>
 <html lang="de">
     <head>
-        <link rel="stylesheet" type="text/css" href="profil2_css.css" media="screen" />
+    <!--    <link rel="stylesheet" type="text/css" href="profil2_css.css" media="screen" /> !-->
         <meta charset="UTF-8">
         <title>Profilseite</title>
     </head>
@@ -40,6 +40,8 @@ $statement->bindParam(':email', $_SESSION["email"]);
 
             <h4>Füge ein Profilbild von dir hinzu</font></h4>
 
+
+                <div class="upload"
                 <form method="post" action="upload2.php" enctype="multipart/form-data">
 
                     <input type="file" name="BildZumHochladen" id="BildZumHochladen">
@@ -52,12 +54,16 @@ $statement->bindParam(':email', $_SESSION["email"]);
 
                     while ($row=$statement->fetch()){
                         $profilbild=$row['bild_id'];
-                        echo "<img src='upload/$profilbild'>";
-                    }
+
+
+
+                         echo "<img src='upload/$profilbild'>";
+                       }
 
                     ?>
 
                 </form>
+            </div>
 
     </div>
                 <div class="info">
