@@ -17,7 +17,11 @@ h2 {
 
 .postingsschreiben {
 
-    margin-left: 5%;
+    padding-left: 5%;
+    background-color: rgba(0, 0, 0, 0.21);
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-top:10px;
 
 
 
