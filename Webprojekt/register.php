@@ -10,6 +10,7 @@ include("datenbank.php");
 
     <title>Registrierung</title>
     <link rel="stylesheet" type="text/css" href="register_CSS.css" media="screen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 

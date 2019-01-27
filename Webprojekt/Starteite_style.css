@@ -1,26 +1,44 @@
 body {
     background-color:white;
+    font-family: Verdana;
 }
 
 
-h2 {text: align:center;}
+h2 {
+
+    width: 200vh;
+    font-size: 400%;
+    color: #de1e3a;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 50px;
+
+}
+
+.postingsschreiben {
+
+    margin-left: 5%;
 
 
 
-
-
-div {border-bottom-left-radius: 2px;
- color: black;}
-ul {color: #de1a39;
- border: 2px;
 }
 
 
-.deinprofil {
+.beiträge {
 
-  font-family: Verdana;
+    float: right;
+    margin-right: 40%;
+    width: 500px;
+    height: max-content;
 
-    color: black;
-float: left;
+
+
+}
+
+input:hover { background-color: #de1a39;
+    font-family: Verdana;
+    font-weight: bold;
+    color: white;
+
 
 }

@@ -45,7 +45,9 @@ $email = $_SESSION["email"];
                 <a class="nav-link" href="#">startseite <span class="sr-only">(current)</span></a>
             </li>
             <li>
-                <button type="button" class="btn btn-outline-danger">logout</button>
+
+                <button formaction="./profilseite/logout.php" type="button" class="btn btn-outline-danger">logout</button>
+
             </li>
 
             <li>

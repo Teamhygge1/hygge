@@ -14,12 +14,13 @@ $statement = $pdo->prepare($sql);
 $statement->execute(array("$user", "$Body"));
 
 ?>
-<link rel="stylesheet" href="postingsschreiben.css" >
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Post schreiben</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 

@@ -29,6 +29,7 @@ if(isset($_GET['login'])) {
 <head>
     <link rel="stylesheet" type="text/css" href="Login_CSS.css" media="screen" />
     <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 <body>

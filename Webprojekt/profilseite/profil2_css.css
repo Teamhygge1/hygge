@@ -2,9 +2,8 @@ body {
 
   background-color: white;
     font-family: Verdana;
-    position: relative;
-width: auto;
-    background-repeat: no-repeat;
+   min-width: 100%;
+    min-height: 100%;
 
 
 
@@ -15,44 +14,72 @@ width: auto;
 
 
     justify-content: center;
-    width: available;
+
 }
 
 h1 {
     width: 200vh;
     font-size: 400%;
-    color: #de1a39;
+    color: #de1e3a;
     font-weight: bold;
     text-align: center;
     margin-bottom: 50px;
 
 }
 
-.upload {
+div {
 
     float: left;
+
+
+}
+
+
+
+
+
+
+.upload {
+
     margin: 30px;
     padding-left: 30px;
-
+    float: left;
 }
 
 
 .info {
 
-    float: left;
+
+
+    margin-top: 300px;
 
 }
 
 
 .posts {
-    float: right;
-    margin-left: 10%;
+
     border: black;
     border: 15px;
-    width: 200%;
-    background-color: rgba(69, 69, 68, 0.38);
-    height: 200px;
+    width: max-content;
+    background-color: rgba(69, 69, 68, 0.31);
+    height: max-content;
     padding: 50px;
     border-radius: 10px;
     text-align: center;
+    margin-left: 10%;
 }
+
+
+h3 {
+    font-weight: bold;
+
+
+}
+
+h4 {
+
+    font-weight: bold;
+}
+
+
+
