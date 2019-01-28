@@ -3,19 +3,21 @@ session_start();
 include_once ("datenbank.php"); // Datenbankverbindung herstellen
 
 
-if(isset($_GET['login'])) {
-    $email = $_POST['email'];
-    $_SESSION["email"] = $email;
-    $passwort = $_POST['passwort'];
+if(isset($_GET['login'])) {  // Check, ob man eingeloggt ist
+    $email = $_POST['email'];   // Email aus DB
+    $_SESSION["email"] = $email;  //Email wird als Session Wert gespeichert
+    $passwort = $_POST['passwort']; //Passwort aus DB
 
 
-    $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email ");
-    $result = $statement->execute(array('email' => $email));
+
+    // Eingabe Check vom Login
+    $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email ");//durch Pdo Statement wird die Email aus der DB gelesen die mit der Email der Session übereinstimmt
+    $result = $statement->execute(array('email' => $email)); //vergleich der Emails
     $user = $statement->fetch();
 
     //Überprüfung des Passworts
-    if ($user !== false && password_verify($passwort, $user['passwort'])) {
-        $_SESSION['userid'] = $user['id'];
+    if ($user !== false && password_verify($passwort, $user['passwort'])) { //Password Verify, wegen dem Passwort Hash
+        $_SESSION['email'] = $user['email'];
         die('Login erfolgreich. Weiter zu <a href="startseite22.php?user=' . $email . '">internen Bereich</a>');
     } else {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";
@@ -40,7 +42,7 @@ if(isset($_GET['login'])) {
 
 
 
-if(isset($errorMessage)) {
+if(isset($errorMessage)) {  //falls Error Message, dann wird sie ausgegeben
     echo $errorMessage;
 }
 ?>
