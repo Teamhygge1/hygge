@@ -1,6 +1,7 @@
 <?php
 include("header2.php");
 include_once ("datenbank.php");
+include ("action.php");
 session_start();
 ?>
 
