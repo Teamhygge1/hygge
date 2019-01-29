@@ -77,7 +77,7 @@ $statement->bindParam(':email', $_SESSION["email"]);
                         <?php
                         $statement= $pdo->prepare("SELECT Informationen FROM profil WHERE email=:email");
                         $statement = $pdo->prepare($sql);
-                        $statement->execute(array(":email"=>"$email"));
+                        $statement->execute(array(":email"=>$email));
                         $statement->bindParam(':email', $_SESSION["email"]);
                         while ($row=$statement->fetch())  {
                         $email = $row['email'];
@@ -99,7 +99,7 @@ $statement->bindParam(':email', $_SESSION["email"]);
         <div class="posts">
             <h3>Deine Posts:</h3>
             <?php
-            $sql = "SELECT * FROM `Posts` WHERE email=:email order by created_at DESC";
+            $sql = "SELECT * FROM Posts WHERE email=:email order by created_at DESC";
             $statement = $pdo->prepare($sql);
             $statement->execute(array(":email" => "$email"));
             $statement->bindParam(':email', $_SESSION["email"]);
