@@ -2,6 +2,9 @@
 session_start();
 include('../header2.php');
 require('../datenbank.php');
+include ("../follow.php");
+
+
 $id_andere = $_GET["andere"];
 $Informationen = $_POST["Informationen"]; // get oder post
 // noch userid irgendwie abfragen und einlesen
@@ -25,9 +28,13 @@ echo ($Informationen); //von riemke
     <div class="col-4">
         <div class="hintergrund">
             <h1>Herzlich Willkommen auf der Profilseite von <?php echo $id_andere?> </h1>
-           <form method="post" action="../follow.php" enctype="multipart/form-data">
-            <input type="submit" value="Folgen">
-           </form>
+
+
+
+            <form action="profilvonaußen.php?username=<?php echo $id_andere; ?>" method="post">
+                <input type="submit" name="follow" value="Follow">
+            </form>
+
 
             <h4>Das ist <?php echo $id_andere?> </h4>
 
