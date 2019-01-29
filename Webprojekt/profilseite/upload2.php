@@ -2,7 +2,6 @@
 include ("../datenbank.php");
 session_start();
 $email = $_SESSION["email"];
-
 if (isset($_POST['submit'])){
     $file = $_FILES['BildZumHochladen'];
 

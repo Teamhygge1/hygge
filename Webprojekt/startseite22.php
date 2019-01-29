@@ -53,13 +53,16 @@ session_start();
                                 $statement = $pdo->prepare ( "SELECT * FROM `Posts` order by created_at ASC");
                                 // $pdo = new PDO('mysql::host=mars.iuk.hdm-stuttgart.de;dbname=u-as327', 'as327', 'LahMaedae1');
                                 $sql = "SELECT * FROM Posts";
+
                                 foreach ($pdo->query($sql) as $row) {
                                     $email= $row['email'];
                                     echo "<a href='./profilseite/profilvonaußen.php?andere=$email'>".$email."</a> schrieb: <br/>
-                        ".$row['Body']."<br/>";
+                                    ".$row['Body']."<br/>"; $profilbild = $row['bild_id'];
+                                    echo "<img src='upload/$profilbild'>";
                                     echo "<div class= 'post'>"."geschrieben am:" .$row['created_at']."<br /> <br/> </div>";
                                 }
                                 ?>
+
                             </p>
                     </fieldset>
                 </form>

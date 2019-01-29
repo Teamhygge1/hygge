@@ -1,5 +1,6 @@
 <?php
 include ("datenbank.php");
+session_start();
 $email = $_SESSION["email"];
 if (isset($_POST['submit'])) {
     $file = $_FILES['BildZumHochladen'];
@@ -22,9 +23,9 @@ if (isset($_POST['submit'])) {
                 $fileDestination = '/home/jg119/public_html/Webprojekt/profilseite/upload/' . $fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
                 $bild_id = $fileNameNew;
-                $sql = "UPDATE Posts SET bild_id=:bild_id_neu WHERE email=:email";
+                $sql = "INSERT INTO Posts (email, bild_id) VALUES (? , ?)";
                 $statement = $pdo->prepare($sql);
-                $statement->execute(array("bild_id_neu" => $bild_id, "email" => $email));
+                $statement->execute(array("$email","$bild_id"));
                 header("location: startseite22.php");
 
 
