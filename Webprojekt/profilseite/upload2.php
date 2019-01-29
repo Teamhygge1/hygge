@@ -37,7 +37,7 @@ if (isset($_POST['submit'])){
             echo "Das Bild konnte leider nicht hochgeladen werden";
         }
     } else {
-        echo "Dieser Bildtyp wird nicht unterstüzt";
+        echo "Dieser Bildtyp wird nicht unterstützt";
     }
 
 

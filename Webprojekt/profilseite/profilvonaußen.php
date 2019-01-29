@@ -1,11 +1,11 @@
 <?php
+session_start();
 include('../header2.php');
 require('../datenbank.php');
-session_start();
-$id_andere = $_GET["id_andere"];
+$id_andere = $_GET["andere"];
 $Informationen = $_POST["Informationen"]; // get oder post
 // noch userid irgendwie abfragen und einlesen
-//$email = $_SESSION["email"];
+$email = $_SESSION["email"];
 //Posts in Datenbank schreiben
 
 
@@ -25,6 +25,9 @@ echo ($Informationen); //von riemke
     <div class="col-4">
         <div class="hintergrund">
             <h1>Herzlich Willkommen auf der Profilseite von <?php echo $id_andere?> </h1>
+           <form method="post" action="../follow.php" enctype="multipart/form-data">
+            <input type="submit" value="Folgen">
+           </form>
 
             <h4>Das ist <?php echo $id_andere?> </h4>
 
@@ -36,14 +39,13 @@ echo ($Informationen); //von riemke
         <div class="info">
             <h3>Infos über <?php echo $id_andere?>: </h3>
             <?php
-            $sql = "SELECT 'Informationen' FROM `profil` WHERE email=:$id_andere";
+            $sql = "SELECT 'Informationen' FROM `profil` WHERE email=$id_andere";
             $statement = $pdo->prepare($sql);
-            $statement->execute(array(":email"=>"$id_andere"));
-            $statement->bindParam(':email', $_SESSION["email"]);
+            $statement->execute();
             while ($row=$statement->fetch()) {
                 $email = $row['email'];
                 echo "<br/>
-                        " . $row['Informationen'] . "<br/>";
+                        ". $row['Informationen']."<br/>";
             }
             ?>
 
@@ -53,10 +55,9 @@ echo ($Informationen); //von riemke
 
         <h3> Posts:</h3>
         <?php
-        $sql = "SELECT * FROM `Posts` WHERE email=:$id_andere order by created_at DESC";
+        $sql = "SELECT * FROM `Posts` WHERE email=:id_andere order by created_at DESC";
         $statement = $pdo->prepare($sql);
-        $statement->execute(array(":email"=>"$id_andere"));
-        $statement->bindParam(':email', $_SESSION["email"]);
+        $statement->bindParam(':id_andere', $_GET["andere"]);
         while ($row=$statement->fetch())  {
             $email= $row['email'];
             echo "<br/>

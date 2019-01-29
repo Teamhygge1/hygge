@@ -6,7 +6,7 @@ session_start();
 
 $email = $_SESSION["email"];
 $andere= $_GET ["andere" ];
-//$kuerzel = $_SESSION["kuerzel"]; #help
+
 
 // In Tabelle Abonnenten wird das "Follower-Verhältnis" vermerkt.
 $pdo = new PDO ($dsn, $dbuser, $dbpass, array('charset'=>'utf8'));
