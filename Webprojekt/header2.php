@@ -50,16 +50,18 @@ $email = $_SESSION["email"];
 
             </li>
 
+
+
             <li>
     </div>
 
     <ul class="nav navbar-nav navbar-right">
  <?php
 
- $sql = "SELECT * FROM Posts WHERE status='0'";
-        $statement = $pdo->prepare($sql);
-        $statement->execute();
-        $anzahl_benachrichtigungen = $statement->rowCount();
+// $sql = "SELECT * FROM Posts WHERE status='0'";
+       // $statement = $pdo->prepare($sql);
+       // $statement->execute();
+      //  $anzahl_benachrichtigungen = $statement->rowCount();
 
         ?>
 

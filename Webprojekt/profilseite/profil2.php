@@ -42,7 +42,7 @@ $statement->bindParam(':email', $_SESSION["email"]);
             <h4>Füge ein Profilbild von dir hinzu</font></h4>
 
 
-                <div class="upload"
+                <div class="upload">
                 <form method="post" action="upload2.php" enctype="multipart/form-data">
 
                     <input type="file" name="BildZumHochladen" id="BildZumHochladen">
@@ -74,34 +74,48 @@ $statement->bindParam(':email', $_SESSION["email"]);
                         <textarea name="Informationen" placeholder="Schreibe etwas über dich..."> <?php echo ($Informationen); //von riemke ?></textarea>
                         <input type="submit" value="speichern">
 
-
-
+                        <?php
+                        $statement= $pdo->prepare("SELECT Informationen FROM profil WHERE email=:email");
+                        $statement = $pdo->prepare($sql);
+                        $statement->execute(array(":email"=>$email));
+                        $statement->bindParam(':email', $_SESSION["email"]);
+                        while ($row=$statement->fetch())  {
+                        $email = $row['email'];
+                        echo "<br/>
+                        " . $row['Informationen'] . "<br/>";
+                        ?>
 
                     </form>
                 </div>
 
-                    <!-- <div class="row">
-                <textarea name="Informationen" >Schreibe etwas über dich... </textarea>
-                    <form method="post" action="Infospeichern.php" id="info" enctype="multipart/form-data">
-                    <input type="submit" value="Speichern">
-                    </form>
-               <!-- <span id="count"></span> -->
-            <!--</div> -->
+        <!-- <div class="row">
+    <textarea name="Informationen" >Schreibe etwas über dich... </textarea>
+        <form method="post" action="Infospeichern.php" id="info" enctype="multipart/form-data">
+        <input type="submit" value="Speichern">
+        </form>
+   <!-- <span id="count"></span> -->
+        <!--</div> -->
 
-            <div class="posts">
-                <h3>Deine Posts:</h3>
-                    <?php
-                    $sql = "SELECT * FROM `Posts` WHERE email=:email order by created_at DESC";
-                    $statement = $pdo->prepare($sql);
-                    $statement->execute(array(":email"=>"$email"));
-                    $statement->bindParam(':email', $_SESSION["email"]);
-                    while ($row=$statement->fetch())  {
-                        $email= $row['email'];
-                        echo "<br/>
-                        ".$row['Body']."<br/>";
-                        echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
+        <div class="posts">
+            <h3>Deine Posts:</h3>
+            <?php
+            $sql = "SELECT * FROM Posts WHERE email=:email order by created_at DESC";
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":email" => "$email"));
+            $statement->bindParam(':email', $_SESSION["email"]);
+            while ($row = $statement->fetch()) {
+                $email = $row['email'];
+                echo "<br/>
+                        " . $row['Body'] . "<br/>";
+                echo "geschrieben am: " . $row['created_at'] . "<br /> <br/>";
+            }
+            while ($row = $statement->fetch()) {
+                $profilbild = $row['bild_id'];
 
-                    }
+                echo "<img src='upload/$profilbild'>";
+
+            }
+            }
                     ?>
                 </form>
             </div>

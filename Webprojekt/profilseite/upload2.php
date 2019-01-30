@@ -2,7 +2,6 @@
 include ("../datenbank.php");
 session_start();
 $email = $_SESSION["email"];
-
 if (isset($_POST['submit'])){
     $file = $_FILES['BildZumHochladen'];
 
@@ -37,7 +36,7 @@ if (isset($_POST['submit'])){
             echo "Das Bild konnte leider nicht hochgeladen werden";
         }
     } else {
-        echo "Dieser Bildtyp wird nicht unterstüzt";
+        echo "Dieser Bildtyp wird nicht unterstützt";
     }
 
 

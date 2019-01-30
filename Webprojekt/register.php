@@ -20,6 +20,8 @@ include("datenbank.php");
 <?php
 $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
+
+//Variablen festlegen und aus Sessiosn lesen und aus DB holen
 if(isset($_GET['register'])) {
     $error = false;
     $email = $_POST['email'];
@@ -27,14 +29,20 @@ if(isset($_GET['register'])) {
     $passwort = $_POST['passwort'];
     $passwort2 = $_POST['passwort2'];
 
+    // Überprüfung, ob es sich um eine gültige E-Mail handelt (ob @- Zeichen vorhanden)
+
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
         $error = true;
     }
+
+    // Error, wenn kein Passwort eingegeben wurde
     if(strlen($passwort) == 0) {
         echo 'Bitte ein Passwort angeben<br>';
         $error = true;
     }
+
+    // Error, wenn die angegeben Passwörter nicht überein stimmen
     if($passwort != $passwort2) {
         echo 'Die Passwörter müssen übereinstimmen<br>';
         $error = true;
@@ -54,13 +62,14 @@ if(isset($_GET['register'])) {
         }
     }
 
-    //Keine Fehler, wir können den Nutzer registrieren
+    //Keine Fehler, Nutzer kann registriert werden.
     if(!$error) {
-        $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
+        $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT); //Passwort Hash! Wichtig für die Sicherheit
 
-        $statement = $pdo->prepare("INSERT INTO users (email, passwort) VALUES (:email, :passwort)");
-        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash));
+        $statement = $pdo->prepare("INSERT INTO users (email, passwort) VALUES (:email, :passwort)");  //Eintrag der Daten in die Datenbank
+        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash)); //Passwort Hash
 
+        //Wenn es oben ein Ergebnis gab, wurde der Nutzer erfolgreich registriert
         if($result) {
             echo 'Du wurdest erfolgreich registriert. <a href="login.php">Zum Login</a>';
             $showFormular = false;
