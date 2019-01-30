@@ -5,7 +5,7 @@ session_start();
 $user = $_GET["user"];
 $Body = $_POST["Body"];// get oder post
 $email = $_SESSION["email"];
-//Posts in Datenbank schreiben
+
 
 
 $sql = "INSERT INTO Posts (email, Body, status) VALUES ( ? , ?, '0')";
