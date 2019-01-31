@@ -23,3 +23,30 @@ $stmt->execute(array(":email"=>"$andere")); */
 
 header("Location: profil_anderer.php?profilname=$email");
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
