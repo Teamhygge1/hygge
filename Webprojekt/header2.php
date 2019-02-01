@@ -67,7 +67,7 @@ $email = $_SESSION["email"];
 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="label label-pill label-danger count"
-                      style="border-radius:10px;"><?php echo $anzahl_notification ?></span>
+                      style="border-radius:10px;"><?php echo $nachrichten ?></span>
                 <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
             </a>
 
@@ -84,7 +84,7 @@ $email = $_SESSION["email"];
                         $statement->execute(array(":email" => "$email"));
                         $anzahl = $statement->rowCount(); //zähle die zeilen in der tabelle wo er NULL findet und zeige die anzahl der spalten als anzahl der benachrichtigungen an
                         ?>
-                        <span class="badge badge-primary"><?php echo $nachrichten ?></span>
+                        <span class="badge badge-primary"><?php echo $anzahl ?></span>
                         <!--er soll die variable an dieser stelle ausgeben-->
                     </a>
 
