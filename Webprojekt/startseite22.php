@@ -52,27 +52,26 @@ $email = $_SESSION["email"];
                             <p>
 
                                 <?php
-                                $statement = $pdo->prepare ( "SELECT * FROM `Posts` order by created_at ASC");
-                                $sql = "SELECT * FROM Posts";
+                              //  $statement = $pdo->prepare ( "SELECT * FROM `Posts` order by created_at ASC");
 
                                 $statement= $pdo->prepare("SELECT bild_id FROM users WHERE email=:email");
                                 $statement->execute(array(":email"=>"$email"));
                                 $statement->bindParam(':email', $_SESSION["email"]);
 
-                               while ($row=$statement->fetch()) {
-                                   $profilbild = $row['bild_id'];
+                               while ($row_bild=$statement->fetch()) {
+                                   $profilbild = $row_bild['bild_id'];
 
-                                   $profilbild = $row['bild_id'];
+                                   $profilbild = $row_bild['bild_id'];
                                    if ($Body != NULL) {
                                        echo("$Body");
                                    } else {
                                        echo "<img src='upload/$bild_id'>";
                                    }
-                                   foreach ($pdo->query($sql) as $row) {
+                                   foreach ($pdo->query("SELECT * FROM Posts") as $row) {
                                    }
                                    $email = $row['email'];
 
-                                   echo "<img src='upload/$profilbild'><br>";
+                                   echo "<img src='./profilseite/upload/$profilbild'><br>";
                                    echo "<a href='./profilseite/profilvonaußen.php?andere=$email'>" . $email . "</a> schrieb: <br/>
                                     " . $row['Body'] . "<br/>";
                                    echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] . "<br /> <br/> </div>";
