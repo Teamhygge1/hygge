@@ -38,7 +38,7 @@ $email = $_SESSION["email"];
 </fieldset>
 
 <form method="post" action="Postbildupload.php" enctype="multipart/form-data">
-    <p><label> Füge ein Bild zu deinem Post hinzu:<br>></label></p>
+    <p><label> Füge ein Bild zu deinem Post hinzu:<br></label></p>
     <div class="upload">
         <input type="file" name="BildZumHochladen" id="hochladen">
         <input type="submit" value="Bild hochladen" name="submit">

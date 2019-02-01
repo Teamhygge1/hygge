@@ -126,7 +126,7 @@ $Informationen = $_POST["Informationen"]; // get oder post
             $statement->bindParam(':email', $_SESSION["email"]);
             while ($row = $statement->fetch()) {
                 $email = $row['email'];
-                echo "<br/>
+                echo "fühlt sich".$row['gefühl']."
                         " . $row['Body'] . "<br/>";
                 echo "geschrieben am: " . $row['created_at'] . "<br /> <br/>";
             }

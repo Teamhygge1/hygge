@@ -33,7 +33,7 @@ $email = $_SESSION["email"];
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">hygge</a>
+    <a class="navbar-brand" href="#">HYGGE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,17 +42,16 @@ $email = $_SESSION["email"];
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">startseite <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="startseite22.php">Startseite <span class="sr-only">(current)</span></a>
             </li>
             <li>
 
-                <button class= "btn btn-outline-danger"  id="logout" name="logout" onclick="Location.href='./profilseite/logout.php'">Logout</button>
+               <a href="logout.php" class="btn btn-outline-danger"> Logout </a>
 
             </li>
 
 
 
-            <li>
     </div>
 
     <ul class="nav navbar-nav navbar-right">

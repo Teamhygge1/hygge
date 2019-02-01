@@ -30,8 +30,16 @@ echo ($Informationen); //von riemke
 
             <h4>Das ist <?php echo $id_andere?> </h4>
 
-            <form method="get" action="Bild2.php" enctype="multipart/form-data">
-            </form>
+            <?php
+            $sql= "SELECT bild_id FROM users WHERE email=:id_andere";
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":id_andere" => $id_andere));
+            while ($row=$statement->fetch()){
+            $profilbild=$row['bild_id'];
+
+                echo "<img src='upload/$profilbild'>";
+            }
+            ?>
 
 
         </div>

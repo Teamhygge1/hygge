@@ -22,6 +22,8 @@ $postbild = $_POST ["bild_id"];
 
 <body>
 
+
+
 <h2>Willkommen zurück <?php echo $email ?> ! </h2>
 
 <div class="postingsschreiben">
