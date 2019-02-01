@@ -5,7 +5,10 @@ include_once "datenbank.php";
 session_start();
 
 $email = $_SESSION["email"];
-$andere= $_GET ["andere" ];
+$andere= $_GET ["andere"];
+
+
+echo $andere;
 
 
 // In Tabelle Abonnenten wird das "Follower-Verhältnis" vermerkt.
@@ -21,5 +24,5 @@ if ($statement = $pdo->prepare($sql)) {
 $stmt = $pdo->prepare("UPDATE posts SET $email ='read' WHERE post= ANY(SELECT id FROM posts WHERE email=:andere)");
 $stmt->execute(array(":email"=>"$andere")); */
 
-header("Location: profil_anderer.php?profilname=$email");
+// header("Location: profilvonaußen.php?profilname=$email");
 ?>
