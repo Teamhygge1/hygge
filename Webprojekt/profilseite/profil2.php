@@ -12,37 +12,32 @@ $Informationen = $_POST["Informationen"]; // get oder post
 
 
 
-$sql = "INSERT INTO profil (email, Informationen) VALUES ( ?, ?)";
-$statement = $pdo->prepare($sql);
-$statement->execute(array("$email", "$Informationen"));
-$statement->bindParam(':Informationen', $_POST["Informationen"]);
-$statement->bindParam(':email', $_SESSION["email"]);
+
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-   <link rel="stylesheet" type="text/css" href="profil2_css.css" media="screen" />
-        <meta charset="UTF-8">
-        <title>Profilseite</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
+<head>
+    <link rel="stylesheet" type="text/css" href="profil2_css.css" media="screen" />
+    <meta charset="UTF-8">
+    <title>Profilseite</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
 
 
 
-    <div id="profilseite">
+<div id="profilseite">
     <div class="col-4">
-            <div class="hintergrund">
-             <h1>Herzlich Willkommen auf deiner Profilseite</h1>
-
-
+        <div class="hintergrund">
+            <h1>Herzlich Willkommen auf deiner Profilseite</h1>
 
             <h4>Füge ein Profilbild von dir hinzu</font></h4>
 
 
-                <div class="upload">
+            <div class="upload">
                 <form method="post" action="upload2.php" enctype="multipart/form-data">
 
                     <input type="file" name="BildZumHochladen" id="BildZumHochladen">
@@ -58,35 +53,62 @@ $statement->bindParam(':email', $_SESSION["email"]);
 
 
 
-                         echo "<img src='upload/$profilbild'>";
-                       }
+                        echo "<img src='upload/$profilbild'>";
+                    }
 
                     ?>
 
                 </form>
             </div>
 
-    </div>
-                <div class="info">
-                 <h3>Infos über dich: </h3>
-                    <form method="post" action ="<?php echo $_SERVER[`PHP_SEL`];?>">
-                       <!-- <p><label>Meine Infos:<br></label</p> -->
-                        <textarea name="Informationen" placeholder="Schreibe etwas über dich..."> <?php echo ($Informationen); //von riemke ?></textarea>
-                        <input type="submit" value="speichern">
+        </div>
 
-                        <?php
-                        $statement= $pdo->prepare("SELECT Informationen FROM profil WHERE email=:email");
-                        $statement = $pdo->prepare($sql);
-                        $statement->execute(array(":email"=>$email));
-                        $statement->bindParam(':email', $_SESSION["email"]);
-                        while ($row=$statement->fetch())  {
-                        $email = $row['email'];
-                        echo "<br/>
-                        " . $row['Informationen'] . "<br/>";
-                        ?>
 
-                    </form>
-                </div>
+
+
+
+        <div class="info">
+            <h3>Infos über dich: </h3>
+
+
+
+            <form method="post" action="profil2.php">
+
+                <textarea name="Informationen" placeholder="Schreibe etwas über dich..."></textarea>
+                <input name="submit" type="submit" value="speichern">
+
+            </form>
+
+            <?php
+            if(isset($_POST["submit"])){
+                $sql = "INSERT INTO profil2 (email, Informationen) VALUES ( ?, ?)";
+                $statement = $pdo->prepare($sql);
+                $statement->execute(array("$email", "$Informationen"));
+                $statement->bindParam(':Informationen', $_POST["Informationen"]);
+                $statement->bindParam(':email', $_SESSION["email"]);
+            }
+            ?>
+
+
+        </div>
+
+
+
+        <div class="posts">
+            <h3>Alle deine Informationen:</h3>
+            <?php
+            $sql = "SELECT `Informationen` FROM `profil2` WHERE email=:email";
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":email"=>"$email"));
+
+            while ($row = $statement->fetch()) { // geht Datenbank durch --> gibt alle Treffer aus
+                echo $row['Informationen']."<br />";
+            }
+            ?>
+
+
+        </div>
+
 
         <!-- <div class="row">
     <textarea name="Informationen" >Schreibe etwas über dich... </textarea>
@@ -105,7 +127,7 @@ $statement->bindParam(':email', $_SESSION["email"]);
             $statement->bindParam(':email', $_SESSION["email"]);
             while ($row = $statement->fetch()) {
                 $email = $row['email'];
-                echo "<br/>
+                echo "fühlt sich".$row['gefühl']."
                         " . $row['Body'] . "<br/>";
                 echo "geschrieben am: " . $row['created_at'] . "<br /> <br/>";
             }
@@ -114,12 +136,11 @@ $statement->bindParam(':email', $_SESSION["email"]);
 
                 echo "<img src='upload/$profilbild'>";
 
+
             }
-            }
-                    ?>
-                </form>
-            </div>
+            ?>
+        </div>
     </div>
-    </div>
-    </body>
+</div>
+</body>
 </html>

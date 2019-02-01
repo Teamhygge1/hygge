@@ -3,7 +3,7 @@ session_start();
 include "datenbank.php";
 $email = $_SESSION["email"];
 // if (!isset($_SESSION['email'])) {
- //   header('location: login.php');
+//   header('location: login.php');
 // }
 ?>
 
@@ -33,7 +33,7 @@ $email = $_SESSION["email"];
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">hygge</a>
+    <a class="navbar-brand" href="#">HYGGE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,85 +42,72 @@ $email = $_SESSION["email"];
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">startseite <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="startseite22.php">Startseite <span class="sr-only">(current)</span></a>
             </li>
             <li>
 
-                <button formaction="./profilseite/logout.php" type="button" class="btn btn-outline-danger">logout</button>
+                <a href="logout.php" class="btn btn-outline-danger"> Logout </a>
 
             </li>
 
 
-
-            <li>
     </div>
 
     <ul class="nav navbar-nav navbar-right">
- <?php
+        <?php
 
-// $sql = "SELECT * FROM Posts WHERE status='0'";
-       // $statement = $pdo->prepare($sql);
-       // $statement->execute();
-      //  $anzahl_benachrichtigungen = $statement->rowCount();
+        // $sql = "SELECT * FROM Posts WHERE status='0'";
+        // $statement = $pdo->prepare($sql);
+        // $statement->execute();
+        //  $anzahl_benachrichtigungen = $statement->rowCount();
 
         ?>
 
         <li class="dropdown">
 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="label label-pill label-danger count" style="border-radius:10px;"><?php echo $anzahl_notification ?></span>
+                <span class="label label-pill label-danger count"
+                      style="border-radius:10px;"><?php echo $nachrichten ?></span>
                 <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
             </a>
 
+
             <ul class="dropdown-menu">
 
-                <?php
-
-                if ($anzahl_benachrichtigungen > 0) {
-
-
-                    $query = $pdo->prepare($sql);
-                    $query->execute();
-                    $rows = array();
-
-
-                    while ($row = $query->fetch())
-                        $rows[] = $row;
-                    foreach ($rows as $row) {
-
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="dropdown01" style="color: #0068ff"
+                       data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">Benachrichtigungen
+                        <?php //hier werden die ungelesenen nachrichten ausgelesen
+                        $nachrichten = 0;
+                        $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following from following WHERE email=:email)"); //nimm alls spalten aus der tabelle null wo gelesen auf null gessetzt ist, also die posts die noch ungelesen sind
+                        $statement->execute(array(":email" => "$email"));
+                        $anzahl = $statement->rowCount(); //zähle die zeilen in der tabelle wo er NULL findet und zeige die anzahl der spalten als anzahl der benachrichtigungen an
                         ?>
+                        <span class="badge badge-primary"><?php echo $anzahl ?></span>
+                        <!--er soll die variable an dieser stelle ausgeben-->
+                    </a>
 
-                        <a class="dropdown-item"
-                           href="../webpage/do_gelesen.php?channel=<?php echo $row['channel'] ?>&posts_id=<?php echo $row['posts_id'] ?>">
-                            <small><i>
-                                    <?php
-                                    echo date('F j, Y, g:i a', strtotime($row['date']));
-                                    ?>
-                                </i></small>
-                            <br/>
-                            <div>
-                                Ein neuer Beitrag von
-                                <?php
-                                echo $row['email']; ?>:
-                                <br>
-                                <?php
-                                echo $row['body'] ?>
-                        </a>
-                        <div class="dropdown-divider"></div>
-                        <?php
-                    }
-                    ?>
+                    <div class="dropdown-menu" aria-labelledby="dropdown01">
 
-                    <div class="dropdown-divider"></div>
-                    <?php
+                        <?php // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
+                        if ($nachrichten > 0) {
+                            $sql = "SELECT * from Posts WHERE status='0' AND email = ANY (SELECT following from following WHERE email=:email)";
+                            $query = $pdo->prepare($sql);
+                            $query->execute(array(":email" => "$email"));
+                            $row = array();
+                            while ($row = $query->fetch()) {
 
-                }
-                else {
-                    echo 'Keine neuen Nachrichten.';
-                }
-                ?>
-
-
+                                echo '<div>' . $row["email"] . 'schrieb:</div>';
+                                echo '<div>' . $row["Body"] . '</div>';
+                                echo '<div class="dropdown-divider"></div>';
+                            }
+                        } else {
+                            echo 'Keine neuen Nachrichten';
+                        }
+                        ?>
+                    </div>
+                </li>
             </ul>
 
         </li>
