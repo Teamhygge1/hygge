@@ -39,13 +39,9 @@ echo ($Informationen); //von riemke
         <div class="info">
             <h3>Infos über <?php echo $id_andere?>: </h3>
             <?php
-            $sql = "SELECT 'Informationen' FROM `profil` WHERE email=$id_andere";
-            $statement = $pdo->prepare($sql);
-            $statement->execute();
-            while ($row=$statement->fetch()) {
-                $email = $row['email'];
-                echo "<br/>
-                        ". $row['Informationen']."<br/>";
+            $sql = "SELECT `Informationen` FROM `profil2` WHERE email=:andere";
+            foreach ($pdo->query($sql) as $row) {
+                echo $row['Informationen']."<br />";
             }
             ?>
 
