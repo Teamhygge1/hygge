@@ -46,7 +46,7 @@ $email = $_SESSION["email"];
             </li>
             <li>
 
-                <button formaction="./profilseite/logout.php" type="button" class="btn btn-outline-danger">logout</button>
+                <button class= "btn btn-outline-danger"  id="logout" name="logout" onclick="Location.href='./profilseite/logout.php'">Logout</button>
 
             </li>
 

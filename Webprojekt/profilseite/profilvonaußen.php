@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../header2.php');
+include ('../follow.php');
 require('../datenbank.php');
 $id_andere = $_GET["andere"];
 $Informationen = $_POST["Informationen"]; // get oder post
@@ -25,9 +26,7 @@ echo ($Informationen); //von riemke
     <div class="col-4">
         <div class="hintergrund">
             <h1>Herzlich Willkommen auf der Profilseite von <?php echo $id_andere?> </h1>
-           <form method="post" action="../follow.php" enctype="multipart/form-data">
-            <input type="submit" value="Folgen">
-           </form>
+          <button id="follow" name="follow" onclick="Location.href='follow.php'">Follow Me!</button>
 
             <h4>Das ist <?php echo $id_andere?> </h4>
 
@@ -51,7 +50,7 @@ echo ($Informationen); //von riemke
 
         <div class="posts">
 
-        <h3> Posts:</h3>
+        <h3> Posts von <?php echo $id_andere?> :</h3>
         <?php
         $sql = "SELECT * FROM `Posts` WHERE email=:id_andere order by created_at DESC";
         $statement = $pdo->prepare($sql);
