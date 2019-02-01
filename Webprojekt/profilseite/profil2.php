@@ -34,8 +34,6 @@ $Informationen = $_POST["Informationen"]; // get oder post
         <div class="hintergrund">
             <h1>Herzlich Willkommen auf deiner Profilseite</h1>
 
-
-
             <h4>Füge ein Profilbild von dir hinzu</font></h4>
 
 
@@ -99,8 +97,11 @@ $Informationen = $_POST["Informationen"]; // get oder post
         <div class="posts">
             <h3>Alle deine Informationen:</h3>
             <?php
-            $sql = "SELECT `Informationen` FROM `profil2` WHERE 1";
-            foreach ($pdo->query($sql) as $row) {
+            $sql = "SELECT `Informationen` FROM `profil2` WHERE email=:email";
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":email"=>"$email"));
+
+            while ($row = $statement->fetch()) { // geht Datenbank durch --> gibt alle Treffer aus
                 echo $row['Informationen']."<br />";
             }
             ?>
