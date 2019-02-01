@@ -45,9 +45,14 @@ $email = $_SESSION["email"];
                 <a class="nav-link" href="startseite22.php">Startseite <span class="sr-only">(current)</span></a>
             </li>
             <li>
+                <a class="nav-link" href="profil2.php"> Dein Profil <span class="sr-only">(current)</span> </a>
 
-                <a href="logout.php" class="btn btn-outline-danger"> Logout </a>
 
+            </li>
+
+            <li>
+
+                <a  href="logout.php" class="btn btn-outline-danger"> Logout </a>
             </li>
 
 
@@ -98,11 +103,10 @@ $email = $_SESSION["email"];
                             $row = array();
                             while ($row = $query->fetch()) {
 
-                                echo '<div>' . $row["email"] . 'schrieb:</div>';
+                               echo '<div>' . $row["email"] . 'schrieb:</div>';
                                 echo '<div>' . $row["Body"] . '</div>';
-                                echo '<div class="dropdown-divider"></div>';
-                            }
-                        } else {
+                               echo '<div class="dropdown-divider"></div>';
+                            }     } else {
                             echo 'Keine neuen Nachrichten';
                         }
                         ?>
@@ -124,3 +128,5 @@ $email = $_SESSION["email"];
 
 
 </body>
+
+</html>

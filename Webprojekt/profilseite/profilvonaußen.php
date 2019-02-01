@@ -70,7 +70,12 @@ echo ($Informationen); //von riemke
             echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
 
         }
+
+
+
         ?>
+
+
         </form>
     </div>
     </div>

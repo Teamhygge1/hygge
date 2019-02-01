@@ -23,7 +23,6 @@ $postbild = $_POST ["bild_id"];
 <body>
 
 
-
 <h2>Willkommen zurück <?php echo $email ?> ! </h2>
 
 <div class="postingsschreiben">
@@ -43,10 +42,10 @@ $postbild = $_POST ["bild_id"];
 
 <div class="beiträge">
     <form method="post">
-        <fieldset>
+
             <legend> Hyggellige Beiträge</legend>
 
-            <div>
+
 
                 <?php
                 $sql1 = "SELECT bild_id FROM users WHERE email= 1";
@@ -68,39 +67,74 @@ $postbild = $_POST ["bild_id"];
                     $post_id = $row['ID'];
                     if ($row['Body'] != NULL) {
 
+
+
+
+
                         if ($row['gefühl'] != NULL ){
-                        echo "<div> <a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>".$row['email']."</a> fühlt sich ".$row['gefühl']."</div>";
+
+                            echo "<div class='postausgabe'>";
+                        echo "<div> <a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>".$row['email']."</a> fühlt sich: ".$row['gefühl']."</div>";
                         echo "<br/> " . $row['Body'] . "<br/>";
 
 
-                            echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] ."<img src='./profilseite/upload/$profilbild'><br><br/></div>";
+                            echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] ." <div class='profilbild'><img src='./profilseite/upload/$profilbild'> </div> <br><br/></div>";
                             echo "<button>
                                 <a href='löschen.php?id=$post_id'>Löschen</a>
                         </button> <br>";
 
+                            echo "</div>";
+
+
+
+
                         }else{
+
+                            echo "<div class='postausgabe'>";
                             echo "<a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>" . $row['email']. "</a> schrieb: <br/>
                                     " . $row['Body'] . "<br/>";
                             echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] . "<br /> <br/> </div>";
+
+
+
+
                             echo "<button>
                                 <a href='löschen.php?id=$post_id'>Löschen</a>
                         </button> <br>";
+
+                            echo "</div>>";
                         }
 
 
-                    } else {
+
+
+                    }
+
+
+                    else {
+                        echo "<div class='postausgabe'>";
+
                         echo "<img src='./profilseite/upload/$postbild'>";
                         echo "<button>
                                 <a href='löschen.php?id=$post_id'>Löschen</a>
                         </button>";
+
+
+                        echo "</div>";
                     }
+
+
                 }
+
+
                 ?>
 
 
-            </div>
-        </fieldset>
-    </form>
+</form>
+
+</div>
+
+
 
 </body>
 </html>

@@ -1,8 +1,8 @@
 <?php
 session_start();
 include_once "datenbank.php";
-$meine_id = $_SESSION["login-id"];
-$user_id = $_GET['user_id'];
+$email = $_SESSION["email"];
+$andere= $_GET ["andere" ];
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,7 +16,7 @@ $user_id = $_GET['user_id'];
 $status = 'unread';
 $message = 'message';
 $fehler = false;
-$checkfollow=$pdo->prepare("SELECT * FROM follow WHERE follow_id=$meine_id");
+$checkfollow=$pdo->prepare("SELECT * FROM following WHERE following=$email");
 if ($checkfollow->execute()){
     while ($row2 = $checkfollow->fetch()){
         $userid = $row2['user_id'];
