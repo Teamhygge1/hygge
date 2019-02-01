@@ -39,8 +39,10 @@ echo ($Informationen); //von riemke
         <div class="info">
             <h3>Infos über <?php echo $id_andere?>: </h3>
             <?php
-            $sql = "SELECT `Informationen` FROM `profil2` WHERE email=:andere";
-            foreach ($pdo->query($sql) as $row) {
+            $sql = "SELECT `Informationen` FROM `profil2` WHERE email=:id_andere";
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":id_andere" => $id_andere));
+            while ($row = $statement->fetch()) {
                 echo $row['Informationen']."<br />";
             }
             ?>
@@ -53,8 +55,8 @@ echo ($Informationen); //von riemke
         <?php
         $sql = "SELECT * FROM `Posts` WHERE email=:id_andere order by created_at DESC";
         $statement = $pdo->prepare($sql);
-        $statement->bindParam(':id_andere', $_GET["andere"]);
-        while ($row=$statement->fetch())  {
+        $statement->execute(array(":id_andere" => $id_andere));
+        while ($row = $statement->fetch()) {
             $email= $row['email'];
             echo "<br/>
                         ".$row['Body']."<br/>";

@@ -99,10 +99,9 @@ $Informationen = $_POST["Informationen"]; // get oder post
         <div class="posts">
             <h3>Alle deine Informationen:</h3>
             <?php
-            $sql = "SELECT `ID`, `Informationen`, `email` FROM `profil2` WHERE 1";
+            $sql = "SELECT `Informationen` FROM `profil2` WHERE 1";
             foreach ($pdo->query($sql) as $row) {
-                echo $row['ID']." ".$row['Informationen']."<br />";
-                echo "E-Mail: ".$row['email']."<br /><br />";
+                echo $row['Informationen']."<br />";
             }
             ?>
 
