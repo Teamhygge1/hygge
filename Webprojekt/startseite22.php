@@ -79,9 +79,7 @@ $postbild = $_POST ["bild_id"];
 
 
                             echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] ." <div class='profilbild'><img src='./profilseite/upload/$profilbild'> </div> <br><br/></div>";
-                            echo "<button>
-                                <a href='löschen.php?id=$post_id'>Löschen</a>
-                        </button> <br>";
+
 
                             echo "</div>";
 
@@ -97,11 +95,6 @@ $postbild = $_POST ["bild_id"];
 
 
 
-
-                            echo "<button>
-                                <a href='löschen.php?id=$post_id'>Löschen</a>
-                        </button> <br>";
-
                             echo "</div>>";
                         }
 
@@ -115,9 +108,7 @@ $postbild = $_POST ["bild_id"];
                         echo "<div class='postausgabe'>";
 
                         echo "<img src='./profilseite/upload/$postbild'>";
-                        echo "<button>
-                                <a href='löschen.php?id=$post_id'>Löschen</a>
-                        </button>";
+
 
 
                         echo "</div>";

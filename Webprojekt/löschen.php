@@ -8,3 +8,4 @@ $statement = $pdo->prepare($sql);
 $statement->execute();
 
 header ('Location: startseite22.php');
+?>

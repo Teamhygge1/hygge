@@ -3,12 +3,12 @@
 <?php
 include('../header2.php');
 require('../datenbank.php');
+
 session_start();
 $email = $_SESSION["email"];
 $Informationen = $_POST["Informationen"]; // get oder post
-// noch userid irgendwie abfragen und einlesen
-//$email = $_SESSION["email"];
-//Posts in Datenbank schreiben
+$post_id = $row['ID']; //welche ID es nehmen soll zum post löschen
+//$post_id = $_GET["id"];
 
 
 
@@ -130,12 +130,24 @@ $Informationen = $_POST["Informationen"]; // get oder post
                 echo "<br/>
                         " . $row['Body'] . "<br/>";
                 echo "geschrieben am: " . $row['created_at'] . "<br /> <br/>";
+
+                $post_id = $row['ID']; //welche ID es nehmen soll zum post löschen
+
+                echo "</div>";
+                echo "<button>
+                                <a href='löschen.php?id=$post_id'>Löschen</a>
+                        </button> <br>";
+
             }
+
             while ($row = $statement->fetch()) {
                 $profilbild = $row['bild_id'];
 
                 echo "<img src='upload/$profilbild'>";
-
+                echo "</div>";
+                echo "<button>
+                                <a href='löschen.php?id=$post_id'>Löschen</a>
+                        </button> <br>";
 
             }
             ?>
