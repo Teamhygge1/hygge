@@ -39,7 +39,7 @@ if(isset($_GET['login'])) {  // Check, ob man eingeloggt ist
 
 
 <?php
-if(isset($errorMessage)) {  //falls Error Message, dann wird sie ausgegeben
+if(isset($errorMessage)) {  //falls Error Message, dann wird sie hier ausgegeben
     echo $errorMessage;
 }
 ?>
