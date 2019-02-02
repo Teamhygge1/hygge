@@ -2,7 +2,7 @@
 session_start();
 session_destroy();
 
-echo "logout erfolgreich";
+echo "Logout erfolgreich";
 die;
 
 

@@ -65,9 +65,6 @@ $email = $_SESSION["email"];
                 </form>
             </div>
 
-        <li>
-            <a  href="logout.php" class="btn btn-outline-danger"> Logout </a>
-        </li>
         </ul>
     </div>
 

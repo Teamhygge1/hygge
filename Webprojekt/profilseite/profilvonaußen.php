@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('../header2.php');
-include ('../follow.php');
+include ('follow.php');
 require('../datenbank.php');
 $id_andere = $_GET["andere"];
 $Informationen = $_POST["Informationen"]; // get oder post
@@ -14,6 +14,7 @@ echo ($Informationen); //von riemke
 ?>
 
 
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -23,6 +24,11 @@ echo ($Informationen); //von riemke
     <title>Profilseitevonaussen</title>
 </head>
 <body>
+
+<div class="button">
+
+    <a  href="../logout.php" class="btn btn-outline-danger"> Logout </a>
+</div>
 
 <div id="profilseite">
     <div class="col-4">

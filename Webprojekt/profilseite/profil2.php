@@ -25,6 +25,9 @@ $Informationen = $_POST["Informationen"]; // get oder post
     <title>Profilseite</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<body>
+<a  href="../logout.php" class="btn btn-outline-danger"> Logout </a>
+
 <div>
 <div id="profilseite">
 

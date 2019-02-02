@@ -30,16 +30,6 @@ $postbild = $_POST ["bild_id"];
 </div>
 
 
-<div class="button">
-
-    <form id="deinprofil" action="profilseite/profil2.php?"><br>
-        <input onmouseenter="" type="submit" value="Dein Profil">
-
-    </form>
-
-</div>
-
-
 <div class="beiträge">
     <form method="post">
 
