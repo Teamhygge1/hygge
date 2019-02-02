@@ -11,6 +11,9 @@ $email = $_SESSION["email"];
 <!DOCTYPE html>
 <html>
 <head>
+
+
+    <!-- Bootsstrap einbinden-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -22,7 +25,7 @@ $email = $_SESSION["email"];
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
             integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
             crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" type="text/css" href="profilseite/Main.css" media="screen"/>-->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
@@ -32,6 +35,8 @@ $email = $_SESSION["email"];
 
 </head>
 <body>
+
+<!-- Navbar mit Verlinkungen-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">HYGGE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -66,39 +71,53 @@ $email = $_SESSION["email"];
     </div>
 
     <ul class="nav navbar-nav navbar-right">
-        <?php
 
-        // $sql = "SELECT * FROM Posts WHERE status='0'";
-        // $statement = $pdo->prepare($sql);
-        // $statement->execute();
-        //  $anzahl_benachrichtigungen = $statement->rowCount();
-
-        ?>
 
         <li class="dropdown">
+
+
+            <!--Benachrichtugungen Anzeige im Header -->
 
                     <a class="nav-link" href="#" id="dropdown" style="color: #0068ff"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Benachrichtigungen
-                        <?php //hier werden die ungelesenen nachrichten ausgelesen
-                        $nachrichten = 0;
-                        $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following FROM following WHERE email = :email)"); //nimm alls spalten aus der tabelle null wo gelesen auf null gessetzt ist, also die posts die noch ungelesen sind
+
+
+
+
+                        <?php
+
+
+                        $nachrichten = 0; // Variable wird bestimmt, um später den RowCount zu machen
+
+                        $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following FROM following WHERE email = :email)");
+                        //alles aus der Post Tabelle, mit dem Status 0 und aus der Following Tabelle nur die Leute denen die aktuell eingeloggte E-Mail folgt.
+
+
                         $statement->execute(array(":email" => $email));
-                        $nachrichten = $statement->rowCount(); //zähle die zeilen in der tabelle wo er NULL findet und zeige die anzahl der spalten als anzahl der benachrichtigungen an
+                        $nachrichten = $statement->rowCount(); //Addieren der Posts mit dem Status 0
                         ?>
+
+
+
                         <span class="label label-pill label-danger count"
                               style="border-radius:10px;"><?php echo $nachrichten ?></span>
-                        <!--er soll die variable an dieser stelle ausgeben-->
+                        <!--Hier wird die Anzahl der Nachrichten ausgegeben (also nur die Zahl)-->
                     </a>
+
+
 
                     <div class="dropdown-menu" aria-labelledby="dropdown">
 
-                        <?php // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
+                        <?php
+
+                        // wenn es nach dem Row Count mehr als Null Nachrichten gibt, zeige alle Posts von Leuten, denen ich folge.
                         if ($nachrichten > 0) {
-                            $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following FROM following WHERE email = :email)"); //nimm alls spalten aus der tabelle null wo gelesen auf null gessetzt ist, also die posts die noch ungelesen sind
-                            $statement->execute(array(":email" => $email));
+                            $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following FROM following WHERE email = :email)");
                             $row = array();
                             while ($row = $statement->fetch()) {
+
+                                // Anzeige im Dropdown der Nachrichten
 
                                 echo "<div> <a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>".$row['email']."</a> schrieb: </div>";
                                 echo '<div>' . $row["Body"] . '</div>';
