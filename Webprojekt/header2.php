@@ -49,13 +49,6 @@ $email = $_SESSION["email"];
         <ul>
         <li>
             <div class="button">
-                <form id="startseite" action="startseite22.php?">
-                    <input onmouseenter="" type="submit" value="Startseite">
-                </form>
-            </div>
-        </li>
-        <li>
-            <div class="button">
 
                 <form id="deinprofil" action="profilseite/profil2.php?"><br>
                     <input onmouseenter="" type="submit" value="Dein Profil">
