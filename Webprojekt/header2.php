@@ -98,10 +98,10 @@ $email = $_SESSION["email"];
                         <?php // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
                         if ($nachrichten > 0) {
                             $sql = "SELECT * from Posts WHERE status='0' AND email = ANY (SELECT following from following WHERE email=:email)";
-                            $query = $pdo->prepare($sql);
-                            $query->execute(array(":email" => "$email"));
+                            $statement = $pdo->prepare($sql);
+                            $statement->execute(array(":email" => "$email"));
                             $row = array();
-                            while ($row = $query->fetch()) {
+                            while ($row = $statement->fetch()) {
 
                                echo '<div>' . $row["email"] . 'schrieb:</div>';
                                 echo '<div>' . $row["Body"] . '</div>';
