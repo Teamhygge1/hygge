@@ -21,7 +21,10 @@ $postbild = $_POST ["bild_id"];
 </head>
 
 <body>
+<div class="button">
 
+    <a  href="../logout.php" class="btn btn-outline-danger"> Logout </a>
+</div>
 
 <h2>Willkommen zurück <?php echo $email ?> ! </h2>
 
