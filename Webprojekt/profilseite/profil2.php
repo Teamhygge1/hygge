@@ -26,13 +26,6 @@ $Informationen = $_POST["Informationen"]; // get oder post
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <div>
-
-
-    <div class="button">
-        <form id="startseite" action="../startseite22.php?">
-            <input onmouseenter="" type="submit" value="Startseite">
-        </form>
-    </div>
 <div id="profilseite">
 
             <h1>Herzlich Willkommen auf deiner Profilseite</h1>
