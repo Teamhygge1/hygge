@@ -1,10 +1,15 @@
 h1 {
-    width: 200vh;
-    font-size: 400%;
+    text-align: center;
     color: #de1e3a;
     font-weight: bold;
-    text-align: center;
     margin-bottom: 100px;
+    width: 100vmax;
+    display: flex;
+    font-size: 300%;
+    margin-left: 15%;
+    margin-right: 2%;
+
+
 }
 
 #follow:hover {
@@ -15,18 +20,86 @@ h1 {
 }
 h3 {
     font-weight: bold;
-    margin-left: 43%;
-    border-bottom-color: rgba(0, 0, 0, 0.68);
-    border-bottom: 2px;
+    margin-top: unset;
+
+
+
 }
 h4 {
     font-weight: bold;
-    margin-left: 43%;
-    border-bottom-color: rgba(0, 0, 0, 0.68);
-    border-bottom: 2px;
+    margin-left: 5%;
+    margin-bottom: 10%;
+
 }
 
 body {
     font-family: Verdana;
+
+
+
+}
+
+
+img { width: 100%; height: auto }
+
+
+#profilbildausgabe {
+
+    width: auto;
+    height: auto;
+    float: left;
+    margin-left: 5%;
+    margin-bottom: 10%;
+
+
+}
+
+.info{
+
+    float: left;
+    position: relative;
+    margin-bottom: 40px;
+    width: 20%;
+    height: auto;
+    margin-left: 5%;
+    background-color: #c6c6c6;
+    padding: 10px;
+
+}
+
+.posts {
+
+    background-color: rgba(255, 43, 66, 0.22);
+    margin-bottom: 20px;
+    padding: 10px;
+    height: auto;
+    width: 500px;
+    text-align: center;
+    border-radius: 3%;
+    margin-left: 30%;
+    font-family: Verdana;
+}
+
+
+.postings{
+
+
+    margin-left:20%;
+}
+
+form{
+
+    margin-left: 10%;
+    position: relative;
+    height: auto;
+
+}
+
+h5 {
+font-weight: bold;
+    font-size: 20px;
+    font-family: Verdana;
+    margin-left: 30%;
+
 
 }

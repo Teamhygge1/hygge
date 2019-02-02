@@ -19,25 +19,39 @@ echo ($Informationen); //von riemke
 <html lang="de">
 <head>
     <link rel = stylesheet style =text/css href="../profilvonaussen_CSS.css" media = screen>
-    <meta name ="viewport" content = "width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Profilseitevonaussen</title>
 </head>
 <body>
 
-<div class="button">
+<div class="logoutbutton">
 
     <a  href="../logout.php" class="btn btn-outline-danger"> Logout </a>
 </div>
 
+
+
 <div id="profilseite">
     <div class="col-4">
-        <div class="hintergrund">
-            <h1>Herzlich Willkommen auf der Profilseite von <?php echo $id_andere?> </h1>
-            <button id="follow" name="follow" onclick="Location.href='follow.php'">Follow Me!</button>
 
+
+
+
+            <h1>Herzlich Willkommen auf der Profilseite von <?php echo $id_andere?> </h1>
+
+
+
+
+
+
+
+
+         <div id="profilbildausgabe">
             <h4>Das ist <?php echo $id_andere?> </h4>
 
+             <button id="follow" name="follow" onclick="Location.href='follow.php'">Follow Me!</button>
+             <br>
             <?php
             $sql= "SELECT bild_id FROM users WHERE email=:id_andere";
             $statement = $pdo->prepare($sql);
@@ -48,9 +62,12 @@ echo ($Informationen); //von riemke
                 echo "<img src='upload/$profilbild'>";
             }
             ?>
-
+    </div>
 
         </div>
+
+
+
         <div class="info">
             <h3>Infos über <?php echo $id_andere?>: </h3>
             <?php
@@ -64,9 +81,12 @@ echo ($Informationen); //von riemke
 
         </div>
 
-        <div class="posts">
+        <div class="postings">
 
-            <h3> Posts von <?php echo $id_andere?> :</h3>
+
+            <form id="formpostings">
+
+            <h5> Posts von <?php echo $id_andere?> :</h5>
             <?php
             $sql = "SELECT * FROM `Posts` WHERE email=:id_andere order by created_at DESC";
             $statement = $pdo->prepare($sql);
@@ -74,21 +94,22 @@ echo ($Informationen); //von riemke
             while ($row = $statement->fetch()) {
                 $email= $row['email'];
                 $postbild = $row['bild_id'];
-                echo "<br/>
-                        ".$row['Body']."<br/>";
+
+                echo "<div class='posts'>";
+                echo "<br/> ".$row['Body']."<br/>";
                 echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
                 echo "<img src='upload/$postbild'>";
-
+                echo "</div>";
             }
-
-
 
             ?>
 
 
             </form>
         </div>
+
+
+
     </div>
-</div>
 </body>
 </html>
