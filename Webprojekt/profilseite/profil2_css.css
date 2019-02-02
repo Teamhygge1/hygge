@@ -44,7 +44,7 @@ h1 {
 
 .posts {
     float: right;
-    background-color: rgba(222, 30, 58, 0.24);
+    background-color: rgb(179, 179, 179);
     margin-bottom: 20px;
     border: 10px;
     position: relative;

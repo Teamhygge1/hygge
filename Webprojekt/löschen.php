@@ -7,5 +7,5 @@ $sql = "DELETE FROM `Posts` WHERE $id = id";
 $statement = $pdo->prepare($sql);
 $statement->execute();
 
-header ('Location: startseite22.php');
+header ('Location: ./profilseite/profil2.php');
 ?>
