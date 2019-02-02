@@ -43,88 +43,78 @@ $postbild = $_POST ["bild_id"];
 <div class="beiträge">
     <form method="post">
 
-            <legend> Hyggellige Beiträge</legend>
+        <legend> Hyggellige Beiträge</legend>
 
 
+        <?php
+        /*$sql1 = "SELECT bild_id FROM users WHERE email = ANY (SELECT ID FROM Posts)";
+        $statement = $pdo->prepare($sql1);                                       //Gibt das Profilbild aus
+         $statement->execute();
 
-                <?php
-                $sql1 = "SELECT bild_id FROM users WHERE email= 1";
-                $statement = $pdo->prepare($sql1);                                       //Gibt das Profilbild aus
-                $statement->execute(array(":email" => "email"));
+         while ($row = $statement->fetch()) {
 
-                while ($row_bild = $statement->fetch()) {
+             $profilbild = $row['bild_id'];
 
-                    $profilbild = $row_bild['bild_id'];
+           echo  "<div class='profilbild'> <img src='./profilseite/upload/$profilbild'> </div>";
+         } */
 
-                }
+        $sql = "SELECT * FROM `Posts` ORDER BY created_at DESC ";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
+        while ($row = $statement->fetch()) { // geht Datenbank durch --> gibt alle Treffer aus
 
-                $sql = "SELECT * FROM Posts ORDER BY created_at DESC ";
-                $statement = $pdo->prepare($sql);
-                $statement->execute();
-                while ($row = $statement->fetch()) { // geht Datenbank durch --> gibt alle Treffer aus
+            $postbild = $row['bild_id'];
+            $profilbild = $row['bild_id'];
 
-                    $postbild = $row['bild_id'];
-                    $profilbild = $row['bild_id'];
-
-                    if ($row['Body'] != NULL) {
-
-
-
-                        if ($row['gefühl'] != NULL ){
-
-                            echo "<div class='postausgabe'>";
-                        echo "<div> <a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>".$row['email']."</a> fühlt sich: ".$row['gefühl']."</div>";
-                        echo "<br/> " . $row['Body'] . "<br/>";
+            if ($row['Body'] != NULL) {
 
 
-                            echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] ." <div class='profilbild'><img src='./profilseite/upload/$profilbild'> </div> <br><br/></div>";
+                if ($row['gefühl'] != NULL) {
+
+                    echo "<div class='postausgabe'>";
+                    echo "<div> <a href='./profilseite/profilvonaußen.php?andere=" . $row['email'] . "'>" . $row['email'] . "</a> fühlt sich: " . $row['gefühl'] . "</div>";
+                    echo "und schrieb: <br/> " . $row['Body'] . "<br/>";
 
 
-                            echo "</div>";
+                    echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] . " <div class='profilbild'> 
+                    <img src='./profilseite/upload/$profilbild'> </div> <br><br/></div>";
 
 
+                    echo "</div>";
 
 
-                        }else{
+                } else {
 
-                            echo "<div class='postausgabe'>";
-                            echo "<a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>" . $row['email']. "</a> schrieb: <br/>
+                    echo "<div class='postausgabe'>";
+                    echo "<a href='./profilseite/profilvonaußen.php?andere=" . $row['email'] . "'>" . $row['email'] . "</a> schrieb: <br/>
                                     " . $row['Body'] . "<br/>";
-                            echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] . "<br /> <br/> </div>";
+                    echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] . "<br /> <br/> </div>";
 
 
-
-                            echo "</div>>";
-                        }
-
-
-
-
-                    }
-
-
-                    else {
-                        echo "<div class='postausgabe'>";
-
-                        echo "<a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>" . $row['email']. "</a> postete: <br/>";
-                        echo "<img src='./profilseite/upload/$postbild'>";
-
-
-
-                        echo "</div>";
-                    }
-
-
+                    echo "</div>";
                 }
 
 
-                ?>
+            } else {
+                echo "<div class='postausgabe'>";
+
+                echo "<a href='./profilseite/profilvonaußen.php?andere=" . $row['email'] . "'>" . $row['email'] . "</a> postete: <br/>";
+                echo "<img src='profilseite/upload/$postbild'>";
 
 
-</form>
+                echo "</div>";
+            }
+
+
+        }
+
+
+        ?>
+
+
+    </form>
 
 </div>
-
 
 
 </body>

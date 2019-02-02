@@ -17,8 +17,10 @@ echo ($Informationen); //von riemke
 <!DOCTYPE html>
 <html lang="de">
 <head>
+    <link rel = stylesheet style =text/css href="../profilvonaussen_CSS.css" media = screen>
+    <meta name ="viewport" content = "width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>Profilseite</title>
+    <title>Profilseitevonaussen</title>
 </head>
 <body>
 
@@ -26,26 +28,8 @@ echo ($Informationen); //von riemke
     <div class="col-4">
         <div class="hintergrund">
             <h1>Herzlich Willkommen auf der Profilseite von <?php echo $id_andere?> </h1>
-            <?php
-            $sql = "SELECT * FROM following WHERE (email=:email AND following=:id_andere)";
-            $statement = $pdo->prepare($sql);
-            $statement->execute(array(":email"=>$email, ":id_andere"=>$id_andere));
-            $row=$statement->fetch() ;
+            <button id="follow" name="follow" onclick="Location.href='follow.php'">Follow Me!</button>
 
-                if ($id_andere == $row['following']) {
-                    ?>
-                    <button id="follow" name="follow" onclick="Location.href='follow.php'">Follow Me!</button>
-
-                    <?php
-                }
-                else{
-                    ?>
-                    <button id="follow" name="follow" onclick="Location.href='unfollow.php'">Unfollow Me!</button>
-                <?php
-
-                }
-
-            ?>
             <h4>Das ist <?php echo $id_andere?> </h4>
 
             <?php
@@ -53,7 +37,7 @@ echo ($Informationen); //von riemke
             $statement = $pdo->prepare($sql);
             $statement->execute(array(":id_andere" => $id_andere));
             while ($row=$statement->fetch()){
-            $profilbild=$row['bild_id'];
+                $profilbild=$row['bild_id'];
 
                 echo "<img src='upload/$profilbild'>";
             }
@@ -76,26 +60,28 @@ echo ($Informationen); //von riemke
 
         <div class="posts">
 
-        <h3> Posts von <?php echo $id_andere?> :</h3>
-        <?php
-        $sql = "SELECT * FROM `Posts` WHERE email=:id_andere order by created_at DESC";
-        $statement = $pdo->prepare($sql);
-        $statement->execute(array(":id_andere" => $id_andere));
-        while ($row = $statement->fetch()) {
-            $email= $row['email'];
-            echo "<br/>
+            <h3> Posts von <?php echo $id_andere?> :</h3>
+            <?php
+            $sql = "SELECT * FROM `Posts` WHERE email=:id_andere order by created_at DESC";
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":id_andere" => $id_andere));
+            while ($row = $statement->fetch()) {
+                $email= $row['email'];
+                $postbild = $row['bild_id'];
+                echo "<br/>
                         ".$row['Body']."<br/>";
-            echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
+                echo "geschrieben am: " .$row['created_at']."<br /> <br/>";
+                echo "<img src='upload/$postbild'>";
 
-        }
-
-
-
-        ?>
+            }
 
 
-        </form>
-    </div>
+
+            ?>
+
+
+            </form>
+        </div>
     </div>
 </div>
 </body>

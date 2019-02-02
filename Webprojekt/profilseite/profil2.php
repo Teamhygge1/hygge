@@ -128,23 +128,25 @@ $Informationen = $_POST["Informationen"]; // get oder post
             $statement->bindParam(':email', $_SESSION["email"]);
             while ($row = $statement->fetch()) {
                 $email = $row['email'];
+                $postbild = $row['bild_id'];
                 echo "<div class='posts'>";
-                echo "fühlt sich ".$row['gefühl']."
-                        " . $row['Body'] . "<br/>";
+                echo "fühlt sich: ".$row['gefühl']." <br/>
+                    und schrieb:    " . $row['Body'] . "<br/>";
                 echo "geschrieben am: " . $row['created_at'] . "<br /> <br/>";
+                echo "<img src='upload/$postbild'>";
                 $post_id = $row['ID']; //welche ID es nehmen soll zum post löschen
                 echo "<button>
                                 <a href='../löschen.php?id=$post_id'>Löschen</a>
                         </button> <br>";
                echo"</div>";
-            }
-            while ($row = $statement->fetch()) {
-                $profilbild = $row['bild_id'];
+           }
+           /* while ($row = $statement->fetch()) {
+                $postbild = $row['bild_id'];
 
-                echo "<img src='upload/$profilbild'>";
+                echo "<img src='upload/$postbild'>";
 
 
-            }
+            } */
             ?>
 
     </div>

@@ -40,22 +40,29 @@ $email = $_SESSION["email"];
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="startseite22.php">Startseite <span class="sr-only">(current)</span></a>
-            </li>
-            <li>
-                <a class="nav-link" href="profil2.php"> Dein Profil <span class="sr-only">(current)</span> </a>
+        <br class="navbar-nav mr-auto">
+        <ul>
+        <li>
+            <div class="button">
+                <form id="startseite" action="startseite22.php?">
+                    <input onmouseenter="" type="submit" value="Startseite">
+                </form>
+            </div>
+        </li>
+        <li>
+            <div class="button">
 
+                <form id="deinprofil" action="profilseite/profil2.php?"><br>
+                    <input onmouseenter="" type="submit" value="Dein Profil">
 
-            </li>
+                </form>
 
-            <li>
-
-                <a  href="logout.php" class="btn btn-outline-danger"> Logout </a>
-            </li>
-
-
+            </div>
+        </li>
+        <li>
+            <a  href="logout.php" class="btn btn-outline-danger"> Logout </a>
+        </li>
+        </ul>
     </div>
 
     <ul class="nav navbar-nav navbar-right">
