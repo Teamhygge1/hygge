@@ -63,11 +63,10 @@ $postbild = $_POST ["bild_id"];
                 $statement->execute();
                 while ($row = $statement->fetch()) { // geht Datenbank durch --> gibt alle Treffer aus
 
-                    $profilbild = $row_bild['bild_id'];
-                    $post_id = $row['ID'];
+                    $postbild = $row['bild_id'];
+                    $profilbild = $row['bild_id'];
+
                     if ($row['Body'] != NULL) {
-
-
 
 
 
@@ -107,6 +106,7 @@ $postbild = $_POST ["bild_id"];
                     else {
                         echo "<div class='postausgabe'>";
 
+                        echo "<a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>" . $row['email']. "</a> postete: <br/>";
                         echo "<img src='./profilseite/upload/$postbild'>";
 
 
