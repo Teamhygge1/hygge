@@ -70,40 +70,30 @@ $email = $_SESSION["email"];
 
         <li class="dropdown">
 
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="label label-pill label-danger count"
-                      style="border-radius:10px;"><?php echo $nachrichten ?></span>
-                <span class="glyphicon glyphicon-bell" style="font-size:18px;"></span>
-            </a>
-
-
-            <ul class="dropdown-menu">
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#" id="dropdown01" style="color: #0068ff"
+                    <a class="nav-link" href="#" id="dropdown" style="color: #0068ff"
                        data-toggle="dropdown"
                        aria-haspopup="true" aria-expanded="false">Benachrichtigungen
                         <?php //hier werden die ungelesenen nachrichten ausgelesen
                         $nachrichten = 0;
-                        $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following from following WHERE email=:email)"); //nimm alls spalten aus der tabelle null wo gelesen auf null gessetzt ist, also die posts die noch ungelesen sind
-                        $statement->execute(array(":email" => "$email"));
-                        $anzahl = $statement->rowCount(); //zähle die zeilen in der tabelle wo er NULL findet und zeige die anzahl der spalten als anzahl der benachrichtigungen an
+                        $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following FROM following WHERE email = :email)"); //nimm alls spalten aus der tabelle null wo gelesen auf null gessetzt ist, also die posts die noch ungelesen sind
+                        $statement->execute(array(":email" => $email));
+                        $nachrichten = $statement->rowCount(); //zähle die zeilen in der tabelle wo er NULL findet und zeige die anzahl der spalten als anzahl der benachrichtigungen an
                         ?>
-                        <span class="badge badge-primary"><?php echo $anzahl ?></span>
+                        <span class="label label-pill label-danger count"
+                              style="border-radius:10px;"><?php echo $nachrichten ?></span>
                         <!--er soll die variable an dieser stelle ausgeben-->
                     </a>
 
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <div class="dropdown-menu" aria-labelledby="dropdown">
 
                         <?php // wenn es Nachrichten gibt, dann zeige Klasse 'dropdown-item', ansonsten führe else aus 'Keine neuen Nachrichten'
                         if ($nachrichten > 0) {
-                            $sql = "SELECT * from Posts WHERE status='0' AND email = ANY (SELECT following from following WHERE email=:email)";
-                            $statement = $pdo->prepare($sql);
-                            $statement->execute(array(":email" => "$email"));
+                            $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following FROM following WHERE email = :email)"); //nimm alls spalten aus der tabelle null wo gelesen auf null gessetzt ist, also die posts die noch ungelesen sind
+                            $statement->execute(array(":email" => $email));
                             $row = array();
                             while ($row = $statement->fetch()) {
 
-                               echo '<div>' . $row["email"] . 'schrieb:</div>';
+                                echo "<div> <a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>".$row['email']."</a> schrieb: </div>";
                                 echo '<div>' . $row["Body"] . '</div>';
                                echo '<div class="dropdown-divider"></div>';
                             }     } else {
