@@ -38,7 +38,7 @@ $email = $_SESSION["email"];
 
 <!-- Navbar mit Verlinkungen-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">HYGGE</a>
+    <a class="navbar-brand">HYGGE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -51,7 +51,7 @@ $email = $_SESSION["email"];
             <div class="button">
 
                 <form id="deinprofil" action="profilseite/profil2.php?"><br>
-                    <input onmouseenter="" type="submit" value="Dein Profil">
+                    <input  type="submit" value="Dein Profil">
 
                 </form>
 
@@ -61,12 +61,12 @@ $email = $_SESSION["email"];
             <li>
             <div class="button">
                 <form id="startseite" action="../startseite22.php?">
-                    <input onmouseenter="" type="submit" value="Startseite">
+                    <input  type="submit" value="Startseite">
                 </form>
             </div>
 
         <li>
-            <a  href="logout.php"class="btn btn-outline-danger"> Logout </a>
+            <a  href="logout.php" class="btn btn-outline-danger"> Logout </a>
         </li>
         </ul>
     </div>
@@ -79,9 +79,11 @@ $email = $_SESSION["email"];
 
             <!--Benachrichtugungen Anzeige im Header -->
 
-                    <a class="nav-link" href="#" id="dropdown" style="color: #0068ff"
+                    <a class="nav-link" id="dropdown"
                        data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false">Benachrichtigungen
+                       aria-haspopup="true" aria-expanded="false">
+
+                        Benachrichtigungen
 
 
 
@@ -102,7 +104,7 @@ $email = $_SESSION["email"];
 
 
                         <span class="label label-pill label-danger count"
-                              style="border-radius:10px;"><?php echo $nachrichten ?></span>
+                              style="border-radius: 10px;"><?php echo $nachrichten ?></span>
                         <!--Hier wird die Anzahl der Nachrichten ausgegeben (also nur die Zahl)-->
                     </a>
 
@@ -114,18 +116,22 @@ $email = $_SESSION["email"];
 
                         // wenn es nach dem Row Count mehr als Null Nachrichten gibt, zeige alle Posts von Leuten, denen ich folge.
                         if ($nachrichten > 0) {
-                            $statement = $pdo->prepare("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following FROM following WHERE email = :email)");
+                            $sql= ("SELECT * FROM Posts WHERE status='0' AND email = ANY (SELECT following FROM following WHERE email = :email)");
+                            $statement = $pdo->prepare ($sql);
+                            $statement->execute (array (":email" => $email));
                             $row = array();
                             while ($row = $statement->fetch()) {
 
+
                                 // Anzeige im Dropdown der Nachrichten
 
-                                echo "<div> <a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>".$row['email']."</a> schrieb: </div>";
+                                echo "<div><a href='./profilseite/profilvonaußen.php?andere=".$row['email']."'>".$row['email']."</a> schrieb: </div>";
                                 echo '<div>' . $row["Body"] . '</div>';
                                echo '<div class="dropdown-divider"></div>';
                             }     } else {
                             echo 'Keine neuen Nachrichten';
                         }
+
                         ?>
                     </div>
                 </li>
