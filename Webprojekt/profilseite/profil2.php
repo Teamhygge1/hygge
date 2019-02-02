@@ -92,7 +92,7 @@ $Informationen = $_POST["Informationen"]; // get oder post
 
         <div id="alleinfos"
 
-        <h4>Alle deine Informationen: <br> </h4>
+
         <?php
         $sql = "SELECT `Informationen` FROM `profil2` WHERE email=:email";
         $statement = $pdo->prepare($sql);
@@ -129,9 +129,14 @@ $Informationen = $_POST["Informationen"]; // get oder post
             while ($row = $statement->fetch()) {
                 $email = $row['email'];
                 echo "<div class='posts'>";
-                echo "fühlt sich".$row['gefühl']."
+                echo "fühlt sich ".$row['gefühl']."
                         " . $row['Body'] . "<br/>";
-                echo "geschrieben am: " . $row['created_at'] . "<br /> <br/></div>";
+                echo "geschrieben am: " . $row['created_at'] . "<br /> <br/>";
+                $post_id = $row['ID']; //welche ID es nehmen soll zum post löschen
+                echo "<button>
+                                <a href='../löschen.php?id=$post_id'>Löschen</a>
+                        </button> <br>";
+               echo"</div>";
             }
             while ($row = $statement->fetch()) {
                 $profilbild = $row['bild_id'];
