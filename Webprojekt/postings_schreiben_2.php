@@ -1,11 +1,11 @@
 <?php
-include 'datenbank.php';
+include 'datenbank.php'; //bindet Datei mit Datenbankverbindungsdaten ein
 
-session_start();
-$user = $_GET["user"];
-$Body = $_POST["Body"];// get oder post
-$email = $_SESSION["email"];
-//Posts in Datenbank schreiben
+session_start(); //startet Session
+$user = $_GET["user"]; //holt Variable aus der URL
+$Body = $_POST["Body"]; //Body wird später aus der DB geholt
+$email = $_SESSION["email"]; //holt Variable aus aktueller Session, sprich wer ist eingeloggt
+
 
 ?>
 
@@ -18,7 +18,9 @@ $email = $_SESSION["email"];
 </head>
 <body>
 
-<form method="post" action="do_gefühl.php">
+ <!-- Bereich in dem man seinen Post schreiben kann (Textarea) und Bereich in dem man sein Gefühl wählen kann (Option value) -->
+
+<form method="post" action="do_gefühl.php"> <!-- führt die PHP-Datei "do.gefühl aus. -->
     <p><label>Dein Post:<br></label</p>
     <textarea name="Body"></textarea>
 
@@ -36,6 +38,8 @@ $email = $_SESSION["email"];
         <input type="submit" value="Posten" name="submit">
     </form>
 </fieldset>
+
+<!-- Bildupload für den Bilder Post -->
 
 <form method="post" action="Postbildupload.php" enctype="multipart/form-data">
     <p><label> Füge ein Bild zu deinem Post hinzu:<br></label></p>
