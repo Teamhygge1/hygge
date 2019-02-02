@@ -26,8 +26,26 @@ echo ($Informationen); //von riemke
     <div class="col-4">
         <div class="hintergrund">
             <h1>Herzlich Willkommen auf der Profilseite von <?php echo $id_andere?> </h1>
-          <button id="follow" name="follow" onclick="Location.href='follow.php'">Follow Me!</button>
+            <?php
+            $sql = "SELECT * FROM following WHERE (email=:email AND following=:id_andere)";
+            $statement = $pdo->prepare($sql);
+            $statement->execute(array(":email"=>$email, ":id_andere"=>$id_andere));
+            $row=$statement->fetch() ;
 
+                if ($id_andere == $row['following']) {
+                    ?>
+                    <button id="follow" name="follow" onclick="Location.href='follow.php'">Follow Me!</button>
+
+                    <?php
+                }
+                else{
+                    ?>
+                    <button id="follow" name="follow" onclick="Location.href='unfollow.php'">Unfollow Me!</button>
+                <?php
+
+                }
+
+            ?>
             <h4>Das ist <?php echo $id_andere?> </h4>
 
             <?php
