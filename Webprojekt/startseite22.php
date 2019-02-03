@@ -5,7 +5,7 @@ include("action.php"); //bindet action.php ein
 session_start(); //Session starten
 $user = $_GET["user"]; //user aus der URL nehmen
 $email = $_SESSION["email"]; //welche Mailadresse in der aktuellen Session eingeloggt ist
-$id_andere = $_GET["andere"]; //
+$id_andere = $_GET["andere"]; //Parameter aus URL holen und zwischenspeichern
 $profilbild = $_POST["bild_id"]; //variable für Profilbild deklarieren
 $postbild = $_POST ["bild_id"]; //variable für gepostetes Bild deklarieren
 ?>
