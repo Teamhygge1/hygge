@@ -24,6 +24,9 @@ $email = $_SESSION["email"]; //holt Variable aus aktueller Session, sprich wer i
     <p><label>Dein Post:<br></label</p>
     <textarea name="Body"></textarea>
 
+
+    <!-- Dropdown Menü, in dem man das Gefühl auswählen kann und dann absenden.-->
+
     <fieldset>
         <legend> Wie fühlst du dich heute?</legend>
         <select  name="gefühl" >
@@ -36,9 +39,9 @@ $email = $_SESSION["email"]; //holt Variable aus aktueller Session, sprich wer i
             <option value="Prüfungsphase - frag nicht!"><a> Prüfungsphase - frag nicht! </a></option>
         </select>
         <input type="submit" value="Posten" name="submit">
-    </form>
-</fieldset>
 
+</fieldset>
+ </form>
 <!-- Bildupload für den Bilder Post -->
 
 <form method="post" action="Postbildupload.php" enctype="multipart/form-data">
