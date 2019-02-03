@@ -29,7 +29,7 @@ $email = $_SESSION["email"]; //holt Variable aus aktueller Session, sprich wer i
 
     <fieldset>
         <legend> Wie fühlst du dich heute?</legend>
-        <select  name="gefühl" >
+        <select name="gefühl" >
             <option value="einfach gut"><a> einfach gut</a></option>
             <option value="glücklich"><a> glücklich </a></option>
             <option value="traurig"><a> traurig </a></option>

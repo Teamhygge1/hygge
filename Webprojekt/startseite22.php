@@ -76,24 +76,11 @@ $postbild = $_POST ["bild_id"]; //variable für gepostetes Bild deklarieren
                     echo "</div>";
 
 
-                } else { //Wenn die if-Bedingung (Gefühl nicht null) nicht erfüllt wird, dann wird folgendes ausgegeben
-
-
-
-                    echo "<div class='postausgabe'>"; //definiert den div als Klasse die postausgabe heißt
-                    echo "<a href='./profilseite/profilvonaußen.php?andere=" . $row['email'] . "'>" . $row['email'] . "</a> schrieb: <br/>
-                                    " . $row['Body'] . "<br/>";
-                    //Wer den Post geschrieben hat mit Verlinkung auf dieses Profil und den Text des Posts.
-
-                    echo "<div class= 'post'>" . "geschrieben am:" . $row['created_at'] . "<br /> <br/> </div>";
-                    // Wann der Post geschrieben wurde.
-
-                    echo "</div>";
                 }
 
 
             } else {
-                //wenn If-Schleife mit Bedingung (Body nicht null) nicht erfüllt wird, dann wird folgendes ausgegeben:
+                //wenn If-Schleife mit Bedingung (Body/Gefühl nicht null) nicht erfüllt wird, dann wird folgendes ausgegeben:
 
                 echo "<div class='postausgabe'>";//definiert den div als Klasse die postausgabe heißt
 
