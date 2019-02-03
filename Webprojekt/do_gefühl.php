@@ -5,7 +5,7 @@ $user = $_GET["user"]; //Holt user aus der URL
 $Body = $_POST["Body"];
 $email = $_SESSION["email"]; ////holt Variable aus aktueller Session, sprich wer ist eingeloggt
 $gefühl = $_POST['gefühl'];
-echo $gefühl;
+
 
 $sql = "INSERT INTO Posts (email, Body, status, gefühl) VALUES ( ? , ?, '0', ?)"; //Übergibt Variablen in Datenbank
 $statement = $pdo->prepare($sql); //bereitet das Statement vor
